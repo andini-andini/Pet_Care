@@ -9,9 +9,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Pet Care</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="template/admin/plugins/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template/admin') }}/plugins/images/favicon.png">
     <!-- Custom CSS -->
-    <link href="template/admin/css/style.min.css" rel="stylesheet">
+    <link href="{{ asset('template/admin') }}/css/style.min.css" rel="stylesheet">
     @yield('css')
 </head>
 
@@ -28,10 +28,10 @@
                 <div class="navbar-header" data-logobg="skin6">
                     <a class="navbar-brand" href="#">
                         <b class="logo-icon">
-                            <img src="template/admin/plugins/images/logo-icon.png" alt="homepage" />
+                            <img src="{{ asset('template/admin') }}/plugins/images/logo-icon.png" alt="homepage" />
                         </b>
                         <span class="logo-text">
-                            <img src="template/admin/plugins/images/logo-text.png" alt="homepage" />
+                            <img src="{{ asset('template/admin') }}/plugins/images/logo-text.png" alt="homepage" />
                         </span>
                     </a>
                     <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
@@ -45,7 +45,7 @@
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
                         <li>
                             <a class="profile-pic" href="#">
-                                <img src="template/admin/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><span class="text-white font-medium">{{ Auth::user()->name }}</span></a>
+                                <img src="{{ asset('template/admin') }}/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><span class="text-white font-medium">{{ Auth::user()->name }}</span></a>
                         </li>
                     </ul>
                 </div>
@@ -129,16 +129,16 @@
             </footer>
         </div>
     </div>
-    <script src="template/admin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="{{ asset('template/admin') }}/plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="template/admin/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="template/admin/js/app-style-switcher.js"></script>
+    <script src="{{ asset('template/admin') }}/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('template/admin') }}/js/app-style-switcher.js"></script>
     <!--Wave Effects -->
-    <script src="template/admin/js/waves.js"></script>
+    <script src="{{ asset('template/admin') }}/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="template/admin/js/sidebarmenu.js"></script>
+    <script src="{{ asset('template/admin') }}/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="template/admin/js/custom.js"></script>
+    <script src="{{ asset('template/admin') }}/js/custom.js"></script>
     <script type="text/javascript">
         var APP_URL = "{!! url('/') !!}";
         var pathURL = document.location.pathname;
