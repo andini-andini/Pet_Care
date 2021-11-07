@@ -3,6 +3,7 @@
 use App\Http\Controllers\userController;
 use App\Http\Controllers\doctorController;
 use App\Http\Controllers\barangController;
+use App\Http\Controllers\HomeController;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index', 'doctor'])->name('home');
 Route::resource('user', userController::class);
 Route::resource('doctor', doctorController::class);
 Route::resource('barang', barangController::class);

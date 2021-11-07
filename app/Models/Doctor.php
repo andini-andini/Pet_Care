@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
 {
-    public $table = "doctor";
-    use HasFactory;
 
+    use HasFactory;
+    protected $table = "doctor";
+    public $timetamps = false;
     protected $fillable = [
         'sip',
         'name',

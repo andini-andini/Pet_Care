@@ -147,7 +147,7 @@
                             <div class="col-md-2">
                                 <!--LOGO-->
                                 <div class="wrapper-logo">
-                                    <a class="logo-default" href="#"><img src="template/user/images/logo.png" alt="" class="img-responsive"></a>
+                                    <a class="logo-default" href="{{ route('home') }}"><img src="template/user/images/logo.png" alt="" class="img-responsive"></a>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -157,49 +157,17 @@
                                     <nav class="main-navigation uni-menu-text">
                                         <div class="cssmenu">
                                             <ul>
-                                                <li><a href="{{ route('home') }}">Home</a>
-                                                    {{-- <ul>
-                                                        <li><a href="index-2.html">Home 1</a></li>
-                                                        <li><a href="01_02_home_2.html">Home 2</a></li>
-                                                        <li><a href="01_03_home_3.html">Home 3</a></li>
-                                                    </ul> --}}
-                                                </li>
-                                                <li class="has-sub"><a href='#'>Page</a>
-                                                    <ul>
-                                                        <li><a href="02_01_about.html">About</a></li>
-                                                        <li class="has-sub"><a href="#">doctor</a>
-                                                            <ul>
-                                                                <li><a href="02_02_doctor.html">Doctors </a></li>
-                                                                <li><a href="02_03_doctor_details.html">Doctors Details</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="02_04_contact.html">Contact</a></li>
-                                                        <li><a href="02_05_gallery.html">Gallery</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="03_01_services.html">Services</a></li>
-                                                {{-- <li class="has-sub"><a href="#">Departments</a>
-                                                    <ul>
-                                                        <li><a href="04_01_departments.html">Departments</a></li>
-                                                        <li><a href="04_02_single_department.html">Single Departments</a></li>
-                                                    </ul>
-                                                </li> --}}
-                                                {{-- <li class="has-sub"><a href='#'>Blog</a>
-                                                    <ul>
-                                                        <li><a href="05_01_blog_list.html">Blog list</a></li>
-                                                        <li><a href="05_02_blog_grid.html">Blog Grid</a></li>
-                                                        <li><a href="05_03_single_post.html">Single post</a></li>
-                                                    </ul>
-                                                </li> --}}
+                                                <li><a href="{{ route('home') }}">Home</a></li>
+                                                <li><a href="#">About</a></li>
+                                                <li><a href="#">Services</a></li>
+                                                <li><a href="#">doctor</a></li>
                                                 <li class="has-sub"><a href='#'>shop</a>
                                                     <ul>
                                                         <li><a href="06_01_shop.html">Shop</a></li>
-                                                        <li><a href="06_02_single_product.html">Single Product</a></li>
                                                         <li><a href="06_03_cart.html">Cart</a></li>
                                                         <li><a href="06_04_checkout.html">Checkout</a></li>
                                                     </ul>
                                                 </li>
-                                                {{-- <li class="has-sub hover-element"><a href='#'>Shortcode</a></li> --}}
                                                 <li>
                                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">Log Out</a>
@@ -219,69 +187,12 @@
                                             <i class="fa fa-search" aria-hidden="true"></i>
                                         </li>
                                         <li class="uni-btn-appointment">
-                                            <a href="/login">Appointment</a>
+                                            <a href="#">Appointment</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-
-                        {{-- <!--SHORTCODE-->
-                        <div class="show-hover-shortcodes animated">
-                            <div class="short-code-title">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <h4>SHORT CODE 1</h4>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <h4>SHORT CODE 2</h4>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <h4>SHORT CODE 3</h4>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <h4>SHORT CODE 4</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="short-code-content">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <ul>
-                                            <li><a href="07_01_buttons.html"><i class="fa fa-plus-square" aria-hidden="true"></i>Buttons</a></li>
-                                            <li><a href="07_02_icons_box.html"><i class="fa fa-cube" aria-hidden="true"></i>Icon Box</a></li>
-                                            <li><a href="07_03_progress.html"><i class="fa fa-tasks" aria-hidden="true"></i>Process Bar</a></li>
-                                            <li><a href="07_04_tabs.html"><i class="fa fa-columns" aria-hidden="true"></i>Tabs</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <ul>
-                                            <li><a href="07_05_accordion.html"><i class="fa fa-list" aria-hidden="true"></i>Accordion</a></li>
-                                            <li><a href="07_06_counter.html"><i class="fa fa-tachometer" aria-hidden="true"></i>Counter</a></li>
-                                            <li><a href="07_07_testimonials.html"><i class="fa fa-comments-o" aria-hidden="true"></i>Testimonials</a></li>
-                                            <li><a href="07_08_typography.html"><i class="fa fa-text-width" aria-hidden="true"></i>Typography</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <ul>
-                                            <li><a href="07_09_partner.html"><i class="fa fa-handshake-o" aria-hidden="true"></i> Partner</a></li>
-                                            <li><a href="07_10_team.html"><i class="fa fa-users" aria-hidden="true"></i> Team</a></li>
-                                            <li><a href="07_11_item_list.html"><i class="fa fa-list-ol" aria-hidden="true"></i> Item List</a></li>
-                                            <li><a href="07_12_divider.html"><i class="fa fa-chain-broken" aria-hidden="true"></i>Dividers</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <ul>
-                                            <li><a href="07_13_columns.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Columns</a></li>
-                                            <li><a href="07_14_pricing_table.html"><i class="fa fa-address-card-o" aria-hidden="true"></i> Pricing table</a></li>
-                                            <li><a href="#"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 404 Pages</a></li>
-                                            <li><a href="#"><i class="fa fa-repeat" aria-hidden="true"></i> Comming soon</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--END SHORTCODE--> --}}
 
                         <!--FORM SEARCH-->
                         <div class="uni-form-search-header">
@@ -310,13 +221,13 @@
                             <div class="content animated" data-animation="flipInX" data-delay="0.9s">
                                 <div class="container">
                                     <div class="caption">
-                                        <h1>Let us protect your health</h1>
+                                        <h1>Let's protect your pet's health</h1>
                                         <p>
-                                            Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+                                            Pet health has an important role in increasing production
                                             <br>
-                                            Donec eu libero sit amet quam egestas semper.
+                                            and productivity as well as protecting you
                                         </p>
-                                        <a href="#">our services</a>
+                                        <a href="#">APPOINTMENT</a>
                                     </div>
                                 </div>
                             </div>
@@ -326,13 +237,13 @@
                             <div class="content animated" data-animation="flipInX" data-delay="0.9s">
                                 <div class="container">
                                     <div class="caption">
-                                        <h1>Let us protect your health</h1>
+                                        <h1>Let's protect your pet's health</h1>
                                         <p>
-                                            Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+                                            Pet health has an important role in increasing production
                                             <br>
-                                            Donec eu libero sit amet quam egestas semper.
+                                            and productivity as well as protecting you
                                         </p>
-                                        <a href="#">our services</a>
+                                        <a href="#">APPOINTMENT</a>
                                     </div>
                                 </div>
                             </div>
@@ -342,13 +253,13 @@
                             <div class="content animated" data-animation="flipInX" data-delay="0.9s">
                                 <div class="container">
                                     <div class="caption">
-                                        <h1>Let us protect your health</h1>
+                                        <h1>Let's protect your pet's health</h1>
                                         <p>
-                                            Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+                                            Pet health has an important role in increasing production
                                             <br>
-                                            Donec eu libero sit amet quam egestas semper.
+                                            and productivity as well as protecting you
                                         </p>
-                                        <a href="#">our services</a>
+                                        <a href="#">APPOINTMENT</a>
                                     </div>
                                 </div>
                             </div>
@@ -445,12 +356,50 @@
                     </div>
                 </div> --}}
 
+               <!--OUR DOCTOR-->
+               <div class="uni-home-1-our-doctor">
+                <div class="uni-shortcode-team-2 uni-background-2">
+                    <div class="container">
+
+                            <div class="uni-home-title">
+                                <h3>About</h3>
+                                <div class="uni-underline"></div>
+                            </div>
+
+                        {{-- <div class="uni-owl-four-item owl-carousel owl-theme">
+                            @foreach ($doctor as $doctor)
+                            <div class="item">
+                                <div class="uni-team-default">
+                                    <div class="item-img">
+                                        <img src="{{asset('storage/'.$doctor->image)}}" alt="" class="img-responsive">
+                                    </div>
+                                    <div class="item-caption">
+                                        <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
+                                            <div class="item-icons">
+                                                <img src="template/user/images/icons_box/icon_4/icon-5.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
+                                            <div class="item-title">
+                                                <h4>{{ $doctor->name }}</h4>
+                                                <span>SIP: {{ $doctor->sip }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+
 
                 <!--DEPARTMENT-->
                 <div class="uni-hơm-1-department">
                     <div class="container">
                         <div class="uni-home-title">
-                            <h3>Department</h3>
+                            <h3>Service</h3>
                             <div class="uni-underline"></div>
                         </div>
                         <div class="uni-shortcode-icon-box-1">
@@ -547,31 +496,13 @@
                                     <div class="uni-underline"></div>
                                 </div>
 
+
                             <div class="uni-owl-four-item owl-carousel owl-theme">
+                                @foreach ($doctor as $doctor)
                                 <div class="item">
                                     <div class="uni-team-default">
                                         <div class="item-img">
-                                            <img src="template/user/images/team/img.png" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="item-caption">
-                                            <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
-                                                <div class="item-icons">
-                                                    <img src="template/user/images/icons_box/icon_4/icon-5.png" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
-                                                <div class="item-title">
-                                                    <h4>adam jonson</h4>
-                                                    <span>Cardiologist</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="uni-team-default">
-                                        <div class="item-img">
-                                            <img src="template/user/images/team/img1.png" alt="" class="img-responsive">
+                                            <img src="{{asset('storage/'.$doctor->image)}}" alt="" class="img-responsive">
                                         </div>
                                         <div class="item-caption">
                                             <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
@@ -581,100 +512,21 @@
                                             </div>
                                             <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
                                                 <div class="item-title">
-                                                    <h4>Henrik larssom</h4>
-                                                    <span>neurologist</span>
+                                                    <h4>{{ $doctor->name }}</h4>
+                                                    <span>SIP: {{ $doctor->sip }}</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="uni-team-default">
-                                        <div class="item-img">
-                                            <img src="template/user/images/team/img2.png" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="item-caption">
-                                            <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
-                                                <div class="item-icons">
-                                                    <img src="template/user/images/icons_box/icon_4/icon-3.png" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
-                                                <div class="item-title">
-                                                    <h4>amanda smith</h4>
-                                                    <span>Ophthalmology doctor</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="uni-team-default">
-                                        <div class="item-img">
-                                            <img src="template/user/images/team/img3.png" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="item-caption">
-                                            <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
-                                                <div class="item-icons">
-                                                    <img src="template/user/images/icons_box/icon_4/icon-2.png" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
-                                                <div class="item-title">
-                                                    <h4>david martin</h4>
-                                                    <span>Cancer doctor</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="uni-team-default">
-                                        <div class="item-img">
-                                            <img src="template/user/images/team/img.png" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="item-caption">
-                                            <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
-                                                <div class="item-icons">
-                                                    <img src="template/user/images/icons_box/icon_4/icon-5.png" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
-                                                <div class="item-title">
-                                                    <h4>adam jonson</h4>
-                                                    <span>Cardiologist</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="uni-team-default">
-                                        <div class="item-img">
-                                            <img src="template/user/images/team/img1.png" alt="" class="img-responsive">
-                                        </div>
-                                        <div class="item-caption">
-                                            <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
-                                                <div class="item-icons">
-                                                    <img src="template/user/images/icons_box/icon_4/icon-4.png" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
-                                                <div class="item-title">
-                                                    <h4>Henrik larssom</h4>
-                                                    <span>neurologist</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
 
 
-                <!--OUR SERVICES-->
+                {{-- <!--OUR SERVICES-->
                 <div class="uni-home-our-services">
                     <div class="uni-shortcode-icons-box-5">
                         <div class="container">
@@ -837,7 +689,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 {{-- <!--CUSTOMERS SAY-->
                 <div class="uni-home-customers-says">
@@ -959,7 +811,7 @@
                     </div>
                 </div> --}}
 
-                <!--FAQ'S  and LASTEST POST-->
+                {{-- <!--FAQ'S  and LASTEST POST-->
                 <div class="uni-home-faq-latest-post">
                     <div class="container">
                         <div class="row">
@@ -1100,7 +952,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!--MAP-->
                 <div class="uni-home-map">
@@ -1143,11 +995,10 @@
                                         <div class="uni-quick-link">
                                             <ul>
                                                 <li><a href="#"><span>+</span> Home</a></li>
-                                                <li><a href="#"><span>+</span> about</a></li>
-                                                <li><a href="#"><span>+</span> services</a></li>
-                                                <li><a href="#"><span>+</span> timetable</a></li>
-                                                {{-- <li><a href="#"><span>+</span> blog</a></li> --}}
-                                                <li><a href="#"><span>+</span> contact</a></li>
+                                                <li><a href="#"><span>+</span> About</a></li>
+                                                <li><a href="#"><span>+</span> Services</a></li>
+                                                <li><a href="#"><span>+</span> Doctor</a></li>
+                                                <li><a href="#"><span>+</span> Shop</a></li>
                                             </ul>
                                         </div>
                                     </div>

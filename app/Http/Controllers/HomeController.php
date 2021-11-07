@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -25,9 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // return view('home_usr');
+
+        $doctor = Doctor::all();
+
         if (Auth::user()->role == 'usr') {
-            return view('home_usr');
+            return view('home_usr', compact('doctor'));
         } else if (Auth::user()->role == 'adm') {
             return view('home_adm');
         }
