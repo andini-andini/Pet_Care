@@ -4,6 +4,8 @@ use App\Http\Controllers\userController;
 use App\Http\Controllers\doctorController;
 use App\Http\Controllers\barangController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\serviceController;
+use App\Models\Service;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -29,3 +31,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index', 'docto
 Route::resource('user', userController::class);
 Route::resource('doctor', doctorController::class);
 Route::resource('barang', barangController::class);
+Route::resource('service', serviceController::class);

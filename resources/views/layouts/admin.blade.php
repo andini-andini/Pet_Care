@@ -91,9 +91,9 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('service.index')}}" aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Reservation Data</span>
+                                <span class="hide-menu">Data Layanan</span>
                             </a>
                         </li>
 
@@ -125,7 +125,7 @@
         </aside>
         <div class="page-wrapper" style="min-height: 250px;">
             @yield('content')
-            <footer class="footer text-center"> 2021©Hotelly.All Rights Reserved
+            <footer class="footer text-center"> 2021©PetCare.All Rights Reserved
             </footer>
         </div>
     </div>
