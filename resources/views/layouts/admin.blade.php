@@ -96,6 +96,12 @@
                                 <span class="hide-menu">Data Layanan</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('pemesanan.index')}}" aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Data Pemesanan</span>
+                            </a>
+                        </li>
 
                         {{-- @endif --}}
 

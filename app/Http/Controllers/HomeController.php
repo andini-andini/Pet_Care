@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -28,9 +29,10 @@ class HomeController extends Controller
     {
 
         $doctor = Doctor::all();
+        $service = Service::all();
 
         if (Auth::user()->role == 'usr') {
-            return view('home_usr', compact('doctor'));
+            return view('home_usr', compact('doctor'), compact('service'));
         } else if (Auth::user()->role == 'adm') {
             return view('home_adm');
         }

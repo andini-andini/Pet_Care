@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-    <link rel="shortcut icon" type="image/x-icon" href="template/user/images/favicon.png" />
-    <link rel="stylesheet" href="template/user/plugin/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="template/user/plugin/bootstrap/css/bootstrap-theme.css">
-    <link rel="stylesheet" href="template/user/fonts/poppins/poppins.css">
-    <link rel="stylesheet" href="template/user/plugin/fonts/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="template/user/plugin/jquery-ui/jquery-ui.min.css">
-    <link rel="stylesheet" href="template/user/plugin/process-bar/tox-progress.css">
-    <link rel="stylesheet" href="template/user/plugin/owl-carouse/owl.carousel.min.css">
-    <link rel="stylesheet" href="template/user/plugin/owl-carouse/owl.theme.default.min.css">
-    <link rel="stylesheet" href="template/user/plugin/animsition/css/animate.css">
-    <link rel="stylesheet" href="template/user/plugin/jquery-ui/jquery-ui.min.css">
-    <link rel="stylesheet" href="template/user/plugin/mediaelement/mediaelementplayer.css">
-    <link rel="stylesheet" href="template/user/plugin/datetimepicker/bootstrap-datepicker3.css">
-    <link rel="stylesheet" href="template/user/plugin/datetimepicker/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="template/user/plugin/lightgallery/lightgallery.css">
-    <link rel="stylesheet" href="template/user/css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('template/user') }}/images/favicon.png" />
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/fonts/poppins/poppins.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/process-bar/tox-progress.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/owl-carouse/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/owl-carouse/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/animsition/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/mediaelement/mediaelementplayer.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/datetimepicker/bootstrap-datepicker3.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/datetimepicker/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/lightgallery/lightgallery.css">
+    <link rel="stylesheet" href="{{ asset('template/user') }}/css/style.css">
 </head>
 <body>
 
@@ -187,7 +187,7 @@
                                             <i class="fa fa-search" aria-hidden="true"></i>
                                         </li>
                                         <li class="uni-btn-appointment">
-                                            <a href="#">Appointment</a>
+                                            <a href="{{route('pemesanan.index')}}">Appointment</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -404,20 +404,21 @@
                         </div>
                         <div class="uni-shortcode-icon-box-1">
                             <div class="row">
+                                @foreach ($service as $service)
                                 <div class="col-md-4 col-sm-6">
                                     <div class="uni-shortcode-icon-box-1-default">
                                         <div class="item-icons">
-                                            <img src="template/user/images/icons_box/icon_1/icon-5.png" alt="" class="img-responsive">
+                                            <img src="{{asset('storage/'.$service->image)}}" alt="" class="img-responsive">
                                         </div>
                                         <div class="item-caption">
-                                            <h4>cardiology</h4>
-                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                                fames ac turpis egestas adipisicing.</p>
+                                            <h4>{{ $service->name }}</h4>
+                                            <p>Rp. {{ $service->price }}</p>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
 
-                                <div class="col-md-4 col-sm-6">
+                                {{-- <div class="col-md-4 col-sm-6">
                                     <div class="uni-shortcode-icon-box-1-default">
                                         <div class="item-icons">
                                             <img src="template/user/images/icons_box/icon_1/icon-4.png" alt="" class="img-responsive">
@@ -480,7 +481,7 @@
                                                 fames ac turpis egestas adipisicing.</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -957,7 +958,7 @@
                 <!--MAP-->
                 <div class="uni-home-map">
                     <div class="uni-about-map">
-                        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2520.355677596112!2d-0.13052618407551403!3d50.82457546821709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875859878db2cc7%3A0xff129250121f260d!2s45+Queen's+Park+Rd%2C+Brighton+BN2+0GJ%2C+V%C6%B0%C6%A1ng+Qu%E1%BB%91c+Anh!5e0!3m2!1svi!2s!4v1514436176997"  height="700" style="border:0" ></iframe>
+                        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.5043929586145!2d112.6134797145312!3d-7.946713594276082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78827687d272e7%3A0x789ce9a636cd3aa2!2sState%20Polytechnic%20of%20Malang!5e0!3m2!1sen!2sid!4v1636339902985!5m2!1sen!2sid"  height="700" style="border:0" ></iframe>
                         {{-- https://www.google.com/maps/d/u/4/embed?mid=13TlrWxQ3LaSxQqXM_cI-tigs4-nPn64h --}}
                     </div>
                 </div>
@@ -1075,33 +1076,33 @@
         </footer>
     </div>
 </div>
-<script src="template/user/plugin/jquery/jquery-2.0.2.min.js"></script>
-<script src="template/user/plugin/jquery-ui/jquery-ui.min.js"></script>
-<script src="template/user/plugin/bootstrap/js/bootstrap.js"></script>
-<script src="template/user/plugin/process-bar/tox-progress.js"></script>
-<script src="template/user/plugin/waypoint/jquery.waypoints.min.js"></script>
-<script src="template/user/plugin/counterup/jquery.counterup.min.js"></script>
-<script src="template/user/plugin/owl-carouse/owl.carousel.min.js"></script>
-<script src="template/user/plugin/jquery-ui/jquery-ui.min.js"></script>
-<script src="template/user/plugin/mediaelement/mediaelement-and-player.js"></script>
-<script src="template/user/plugin/masonry/masonry.pkgd.min.js"></script>
-<script src="template/user/plugin/datetimepicker/moment.min.js"></script>
-<script src="template/user/plugin/datetimepicker/bootstrap-datepicker.min.js"></script>
-<script src="template/user/plugin/datetimepicker/bootstrap-datepicker.tr.min.js"></script>
-<script src="template/user/plugin/datetimepicker/bootstrap-datetimepicker.js"></script>
-<script src="template/user/plugin/datetimepicker/bootstrap-datetimepicker.fr.js"></script>
+<script src="{{ asset('template/user') }}/plugin/jquery/jquery-2.0.2.min.js"></script>
+<script src="{{ asset('template/user') }}/plugin/jquery-ui/jquery-ui.min.js"></script>
+<script src="{{ asset('template/user') }}/plugin/bootstrap/js/bootstrap.js"></script>
+<script src="{{ asset('template/user') }}/plugin/process-bar/tox-progress.js"></script>
+<script src="{{ asset('template/user') }}/plugin/waypoint/jquery.waypoints.min.js"></script>
+<script src="{{ asset('template/user') }}/plugin/counterup/jquery.counterup.min.js"></script>
+<script src="{{ asset('template/user') }}/plugin/owl-carouse/owl.carousel.min.js"></script>
+<script src="{{ asset('template/user') }}/plugin/jquery-ui/jquery-ui.min.js"></script>
+<script src="{{ asset('template/user') }}/plugin/mediaelement/mediaelement-and-player.js"></script>
+<script src="{{ asset('template/user') }}/plugin/masonry/masonry.pkgd.min.js"></script>
+<script src="{{ asset('template/user') }}/plugin/datetimepicker/moment.min.js"></script>
+<script src="{{ asset('template/user') }}/plugin/datetimepicker/bootstrap-datepicker.min.js"></script>
+<script src="{{ asset('template/user') }}/plugin/datetimepicker/bootstrap-datepicker.tr.min.js"></script>
+<script src="{{ asset('template/user') }}/plugin/datetimepicker/bootstrap-datetimepicker.js"></script>
+<script src="{{ asset('template/user') }}/plugin/datetimepicker/bootstrap-datetimepicker.fr.js"></script>
 
-<script src="template/user/plugin/lightgallery/picturefill.min.js"></script>
-<script src="template/user/plugin/lightgallery/lightgallery.js"></script>
-<script src="template/user/plugin/lightgallery/lg-pager.js"></script>
-<script src="template/user/plugin/lightgallery/lg-autoplay.js"></script>
-<script src="template/user/plugin/lightgallery/lg-fullscreen.js"></script>
-<script src="template/user/plugin/lightgallery/lg-zoom.js"></script>
-<script src="template/user/plugin/lightgallery/lg-hash.js"></script>
-<script src="template/user/plugin/lightgallery/lg-share.js"></script>
-<script src="template/user/plugin/sticky/jquery.sticky.js"></script>
+<script src="{{ asset('template/user') }}/plugin/lightgallery/picturefill.min.js"></script>
+<script src="{{ asset('template/user') }}/plugin/lightgallery/lightgallery.js"></script>
+<script src="{{ asset('template/user') }}/plugin/lightgallery/lg-pager.js"></script>
+<script src="{{ asset('template/user') }}/plugin/lightgallery/lg-autoplay.js"></script>
+<script src="{{ asset('template/user') }}/plugin/lightgallery/lg-fullscreen.js"></script>
+<script src="{{ asset('template/user') }}/plugin/lightgallery/lg-zoom.js"></script>
+<script src="{{ asset('template/user') }}/plugin/lightgallery/lg-hash.js"></script>
+<script src="{{ asset('template/user') }}/plugin/lightgallery/lg-share.js"></script>
+<script src="{{ asset('template/user') }}/plugin/sticky/jquery.sticky.js"></script>
 
-<script src="template/user/js/main.js"></script>
+<script src="{{ asset('template/user') }}/js/main.js"></script>
 </body>
 
 </html>
