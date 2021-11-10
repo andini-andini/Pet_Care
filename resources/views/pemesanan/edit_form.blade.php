@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pemesanan</title>
+    <title>Edit Pesanan</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('template/user') }}/images/favicon.png" />
     <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/bootstrap/css/bootstrap-theme.css">
@@ -64,12 +64,6 @@
                                                         <li><a href="06_01_shop.html">Shop</a></li>
                                                         <li><a href="06_03_cart.html">Cart</a></li>
                                                         <li><a href="06_04_checkout.html">Checkout</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="has-sub"><a href='#'>History</a>
-                                                    <ul>
-                                                        <li><a href="{{route('pemesanan.index')}}">History Pemesanan</a></li>
-                                                        <li><a href="06_03_cart.html">History Pembelian</a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
@@ -196,18 +190,11 @@
                                             <div class="uni-underline"></div>
                                         </div>
 
-                                        <form action="{{route('pemesanan.store')}}" method="POST" enctype="multipart/form-data">
+                                        <form action="{{route('pemesanan.update')}}" method="POST" enctype="multipart/form-data">
+                                            @method('PUT')
                                             @csrf
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <div class="input-group form-group">
-                                                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name')}}" placeholder="Enter name">
-
-                                                        @error('name')
-                                                        <small class="text-danger">{{$message}}</small>
-                                                        @enderror
-                                                    </div>
                                                     <div class="input-group form-group">
                                                         <span class="input-group-addon"><i class="fa fa-paw" aria-hidden="true"></i></span>
                                                         <select name="hewan" id="hewan" class="form-control @error('hewan') is-invalid @enderror"
@@ -216,7 +203,7 @@
                                                             <option value="Cat">Cat</option>
                                                             <option value="Dog">Dog</option>
                                                         </select>
-                                                        <i class="zmdi zmdi-caret-down"></i>
+                                                        <i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
                                                     </div>
                                                     <div class="input-group form-group">
                                                         <span class="input-group-addon"><i class="fa fa-stethoscope" aria-hidden="true"></i></span>
@@ -227,34 +214,16 @@
                                                             <option value="{{$service->id}}">{{$service->name}}</option>
                                                             @endforeach
                                                         </select>
-                                                        <i class="zmdi zmdi-caret-down"></i>
+                                                        <i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
                                                     </div>
-                                                    {{-- <div class="input-group form-group">
-                                                        <div class="input-group date date-check-in" data-date="12-02-2017" data-date-format="mm-dd-yyyy">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                            <input name="date1" class="form-control" type="text" value="12-02-2017">
-                                                            <span class="input-group-addon btn"><i class="fa fa-calendar" id="ti-calendar1" aria-hidden="true"></i></span>
-                                                        </div>
-                                                    </div> --}}
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div class="input-group form-group">
-                                                        {{-- <div class="input-group date date-check-in" data-date="today" data-date-format="dd-mm-yyyy">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                            <input name="date1" class="form-control" type="text" value="12-02-2017">
-                                                            <span class="input-group-addon btn"><i class="fa fa-calendar" id="ti-calendar1" aria-hidden="true"></i></span>
-
-                                                            @error('booking')
-                                                            <small class="text-danger">{{ $message }}</small>
-                                                            @enderror
-                                                        </div> --}}
                                                         <div class="input-group form-group">
                                                             <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                                             <input type="date" name="booking" id="booking" placeholder="dd-mm-yyyy"
                                                                 pattern="(?:30))|(?:(?:0[13578]|1[02])-31))/(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])/(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])"
                                                                 class="form-control">
-                                                            {{-- <input type="date" placeholder="booking" id="booking" class="form-control"> --}}
-                                                            {{-- <i class="zmdi zmdi-calendar"></i> --}}
                                                         </div>
                                                         @error('booking')
                                                             <small style="color: red">{{ $message }}</small>

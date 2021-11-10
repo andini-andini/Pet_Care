@@ -34,3 +34,5 @@ Route::resource('doctor', doctorController::class);
 Route::resource('barang', barangController::class);
 Route::resource('service', serviceController::class);
 Route::resource('pemesanan', pemesananController::class);
+
+Route::put('edit',[pemesananController::class,'status']);

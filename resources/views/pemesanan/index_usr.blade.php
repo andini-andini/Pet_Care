@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pemesanan</title>
+    <title>History Pemesanan</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('template/user') }}/images/favicon.png" />
     <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="{{ asset('template/user') }}/plugin/bootstrap/css/bootstrap-theme.css">
@@ -150,122 +150,76 @@
                     <div class="container">
                         <div class="uni-home-opening-book-content">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="uni-services-opinging-hours">
-                                        <div class="uni-services-opinging-hours-title">
-                                            <div class="icon">
-                                                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            </div>
-                                            <h4>opening hours</h4>
+                                <div class="col-12">
+                                    <div class="card shadow">
+                                        <div class="card-header">
+                                            Riwayat Pemesanan
                                         </div>
-                                        <div class="uni-services-opinging-hours-content">
-                                            <table class="table">
-                                                <tr>
-                                                    <td>monday</td>
-                                                    <td>8:00 - 17:00</td>
+                                        <div class="container-fluid">
+                                            <div class="row mb-4">
+                                                <div class="col-12">
+                                                    {{-- <a href="{{route('service.create')}}" class="btn btn-success">Input</a> --}}
+                                                </div>
+                                            </div>
+                                        <div class="card-body">
+                                            <table id="table-users" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr class="text-center">
+                                                        <th>Kode Pemesanan</th>
+                                                        <th>Nama User</th>
+                                                        <th>Hewan</th>
+                                                        <th>Service</th>
+                                                        <th>Harga</th>
+                                                        <th>Booking</th>
+                                                        <th>Status</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+
+
+                                            @foreach ($pemesanan as $pemesanan)
+                                                <tr class="text-center">
+
+                                                    <td>{{ $pemesanan->code }}</td>
+                                                    <td>{{ $pemesanan->user->name }}</td>
+                                                    <td>{{ $pemesanan->hewan }}</td>
+                                                    <td>{{ $pemesanan->service->name }}</td>
+                                                    <td>Rp. {{ $pemesanan->service->price }}</td>
+                                                    <td>{{ $pemesanan->booking }}</td>
+                                                    <td>
+                                                        <?php
+                                                            if ($pemesanan->status == 1) {
+                                                                echo "verified";
+                                                            }else if($pemesanan->status == 0){
+                                                                echo "unverified";
+                                                            }
+                                                        ?>
+
+                                                    </td>
+                                                    {{-- <td>{{ $pemesanan->Status }}</td> --}}
+
+                                                    {{-- <td>
+                                                        <form action="/wildan" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" value="{{$pemesanan->id}}" id="id" name="id">
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </td> --}}
+                                                    <td>
+                                                        <a class="btn btn-primary" href="{{ route('pemesanan.edit',$pemesanan->id) }}">Edit</a>
+                                                        {{-- <form action="{{ route('doctor.destroy',$pemesanan->id) }}" method="POST">
+                                                            @csrf @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form> --}}
+                                                    </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>tuesday</td>
-                                                    <td>8:00 - 17:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>wednesday</td>
-                                                    <td>8:00 - 17:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>thursday</td>
-                                                    <td>8:00 - 17:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>friday</td>
-                                                    <td>8:00 - 17:00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>sunday</td>
-                                                    <td>8:00 - 17:00</td>
-                                                </tr>
-                                            </table>
+                                            @endforeach
+                                        </table>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="uni-single-department-appointment-form">
-
-                                        <div class="uni-home-title">
-                                            <h3>Book appoitment</h3>
-                                            <div class="uni-underline"></div>
-                                        </div>
-
-                                        <form action="{{route('pemesanan.store')}}" method="POST" enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="row">
-                                                <div class="col-md-5">
-                                                    <div class="input-group form-group">
-                                                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name')}}" placeholder="Enter name">
-
-                                                        @error('name')
-                                                        <small class="text-danger">{{$message}}</small>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="input-group form-group">
-                                                        <span class="input-group-addon"><i class="fa fa-paw" aria-hidden="true"></i></span>
-                                                        <select name="hewan" id="hewan" class="form-control @error('hewan') is-invalid @enderror"
-                                                            name="hewan" value="{{ old('hewan') }}" autocomplete="hewan">
-                                                            <option value="" disabled selected>choose your pet</option>
-                                                            <option value="Cat">Cat</option>
-                                                            <option value="Dog">Dog</option>
-                                                        </select>
-                                                        <i class="zmdi zmdi-caret-down"></i>
-                                                    </div>
-                                                    <div class="input-group form-group">
-                                                        <span class="input-group-addon"><i class="fa fa-stethoscope" aria-hidden="true"></i></span>
-                                                        <select name="service" id="service" class="form-control @error('service') is-invalid @enderror"
-                                                            name="service" value="{{ old('service') }}" autocomplete="service">
-                                                            @foreach ($service as $service)
-                                                            <option value="" disabled selected>choose your Service</option>
-                                                            <option value="{{$service->id}}">{{$service->name}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        <i class="zmdi zmdi-caret-down"></i>
-                                                    </div>
-                                                    {{-- <div class="input-group form-group">
-                                                        <div class="input-group date date-check-in" data-date="12-02-2017" data-date-format="mm-dd-yyyy">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                            <input name="date1" class="form-control" type="text" value="12-02-2017">
-                                                            <span class="input-group-addon btn"><i class="fa fa-calendar" id="ti-calendar1" aria-hidden="true"></i></span>
-                                                        </div>
-                                                    </div> --}}
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <div class="input-group form-group">
-                                                        {{-- <div class="input-group date date-check-in" data-date="today" data-date-format="dd-mm-yyyy">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                            <input name="date1" class="form-control" type="text" value="12-02-2017">
-                                                            <span class="input-group-addon btn"><i class="fa fa-calendar" id="ti-calendar1" aria-hidden="true"></i></span>
-
-                                                            @error('booking')
-                                                            <small class="text-danger">{{ $message }}</small>
-                                                            @enderror
-                                                        </div> --}}
-                                                        <div class="input-group form-group">
-                                                            <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                            <input type="date" name="booking" id="booking" placeholder="dd-mm-yyyy"
-                                                                pattern="(?:30))|(?:(?:0[13578]|1[02])-31))/(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])/(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])"
-                                                                class="form-control">
-                                                            {{-- <input type="date" placeholder="booking" id="booking" class="form-control"> --}}
-                                                            {{-- <i class="zmdi zmdi-calendar"></i> --}}
-                                                        </div>
-                                                        @error('booking')
-                                                            <small style="color: red">{{ $message }}</small>
-                                                        @enderror
-                                                    </div>
-                                                    <button type="submit" class="vk-btn vk-btn-send">send</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>

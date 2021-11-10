@@ -77,14 +77,25 @@
                             <td>{{ $pemesanan->service->name }}</td>
                             <td>Rp. {{ $pemesanan->service->price }}</td>
                             <td>{{ $pemesanan->booking }}</td>
-                            <td>{{ $pemesanan->Status }}</td>
+                            <td>
+                                <?php
+                                    if ($pemesanan->status == 1) {
+                                        echo "verified";
+                                    }else if($pemesanan->status == 0){
+                                        echo "unverified";
+                                    }
+                                ?>
+
+                            </td>
+                            {{-- <td>{{ $pemesanan->Status }}</td> --}}
 
                             <td>
-                                <form action="{{ route('service.destroy',$pemesanan->id) }}" method="POST">
-                                    <a class="btn btn-primary" href="{{ route('service.edit',$pemesanan->id) }}">Edit</a>
-                                    @csrf @method('DELETE')
+                                <a class="btn btn-primary" href="{{ route('pemesanan.edit',$pemesanan->id) }}">Edit</a>
+                                {{-- <form action="/wildan" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="{{$pemesanan->id}}" id="id" name="id">
                                     <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                     @endforeach

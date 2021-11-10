@@ -25,7 +25,7 @@ class pemesananController extends Controller
             return view('pemesanan.index', ['pemesanan' => $pemesanan]);
         } else if (Auth::user()->role == 'usr') {
             $pemesanan = pemesanan::with('service', 'user')->where('user_id',Auth::user()->id)->get();
-            return view('pemesanan.form', ['pemesanan' => $pemesanan, 'service' => $service, 'user' => $users]);
+            return view('pemesanan.index_usr', ['pemesanan' => $pemesanan, 'service' => $service, 'user' => $users]);
         }
     }
 
@@ -36,7 +36,10 @@ class pemesananController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all()->sortBy("asc");
+        $service = Service::all()->sortBy("asc");
+        $pemesanan = pemesanan::with('service', 'user')->where('user_id',Auth::user()->id)->get();
+            return view('pemesanan.form', ['pemesanan' => $pemesanan, 'service' => $service, 'user' => $users]);
     }
 
     /**
@@ -71,7 +74,8 @@ class pemesananController extends Controller
 
 
         $pemesanan->save();
-        return "joss";
+        return redirect()->view('home_usr')->with('success', 'Data Berhasil Ditambahkan');
+        // return "joss";
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         // return redirect()->route('/home')->with('success', 'design Berhasil Ditambahkan');
     }
@@ -95,7 +99,15 @@ class pemesananController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = User::all()->sortBy("asc");
+        $service = Service::all()->sortBy("asc");
+        if (Auth:: user()->role == 'adm') {
+            $pemesanan = Pemesanan::with('service', 'user')->get();
+            return view('pemesanan.edit', ['pemesanan' => $pemesanan]);
+        } else if (Auth::user()->role == 'usr') {
+            $pemesanan = pemesanan::with('service', 'user')->where('user_id',Auth::user()->id)->get();
+            return view('pemesanan.edit_form', ['pemesanan' => $pemesanan, 'service' => $service, 'user' => $users]);
+        }
     }
 
     /**
@@ -107,7 +119,26 @@ class pemesananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'status' => 'required',
+        ]);
+        // $pemesanan = Pemesanan::find($id);
+
+        // $pemesanan->hewan = $request->get('hewan');
+        // $pemesanan->booking = $request->get('booking');
+        // $take = Service::all()->where('id', Request('service'))->first();
+
+        // $pemesanan->service_id = $take->id;
+        // $pemesanan->save();
+        // //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        // return view('home_usr')->with('success', 'Data Berhasil Diperbarui');
+
+        $pemesanan = Pemesanan::find($id);
+
+        $pemesanan->status = $request->get('status');
+        $pemesanan->save();
+        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        return redirect()->route('pemsanan.index')->with('success', 'data Berhasil Diperbarui');
     }
 
     /**
@@ -119,5 +150,21 @@ class pemesananController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function status(Request $request, $id){
+        // $del = Pemesanan::all()->where('id', Request('id'))->first();
+        // $del->delete();
+        // return Request('id');
+        // $request->validate([
+        //     'name' => 'required',
+        //     'price' => 'required',
+        // ]);
+        $pemesanan = Pemesanan::find($id);
+
+        $pemesanan->status = $request->get('status');
+        $pemesanan->save();
+        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        return redirect()->route('pemsanan.index')->with('success', 'data Berhasil Diperbarui');
     }
 }

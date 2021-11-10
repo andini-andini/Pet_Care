@@ -168,6 +168,12 @@
                                                         <li><a href="06_04_checkout.html">Checkout</a></li>
                                                     </ul>
                                                 </li>
+                                                <li class="has-sub"><a href='#'>History</a>
+                                                    <ul>
+                                                        <li><a href="{{route('pemesanan.index')}}">History Pemesanan</a></li>
+                                                        <li><a href="06_03_cart.html">History Pembelian</a></li>
+                                                    </ul>
+                                                </li>
                                                 <li>
                                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">Log Out</a>
@@ -187,7 +193,7 @@
                                             <i class="fa fa-search" aria-hidden="true"></i>
                                         </li>
                                         <li class="uni-btn-appointment">
-                                            <a href="{{route('pemesanan.index')}}">Appointment</a>
+                                            <a href="{{route('pemesanan.create')}}">Appointment</a>
                                         </li>
                                     </ul>
                                 </div>
