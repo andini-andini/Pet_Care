@@ -18,6 +18,7 @@ class Pemesanan extends Model
         'hewan',
         'booking',
         'status',
+        'upload_bukti'
     ];
     public function user()
     {

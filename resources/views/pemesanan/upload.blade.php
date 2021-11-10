@@ -48,7 +48,8 @@
                                     <!--LOGO-->
                                     <div class="wrapper-logo">
                                         <a class="logo-default" href="{{ route('home') }}"><img
-                                                src="template/user/images/logo.png" alt="" class="img-responsive"></a>
+                                                src="{{ asset('template/user/images/logo.png') }}" alt=""
+                                                class="img-responsive"></a>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
@@ -96,136 +97,37 @@
             </header>
 
             <div id="main-content" class="site-main-content">
-                <section class="site-content-area">
-                    <!--BANNER-->
-                    <div class="uni-banner">
-                        <div class="uni-owl-one-item owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="uni-banner-img uni-background-5"></div>
-                                <div class="content animated" data-animation="flipInX" data-delay="0.9s">
-                                    <div class="container">
-                                        {{-- <div class="caption">
-                                        <h1>Let's protect your pet's health</h1>
-                                        <p>
-                                            Pet health has an important role in increasing production
-                                            <br>
-                                            and productivity as well as protecting you
-                                        </p>
-                                        <a href="#">APPOINTMENT</a>
-                                    </div> --}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="uni-banner-img uni-background-6"></div>
-                                <div class="content animated" data-animation="flipInX" data-delay="0.9s">
-                                    <div class="container">
-                                        {{-- <div class="caption">
-                                        <h1>Let's protect your pet's health</h1>
-                                        <p>
-                                            Pet health has an important role in increasing production
-                                            <br>
-                                            and productivity as well as protecting you
-                                        </p>
-                                        <a href="#">APPOINTMENT</a>
-                                    </div> --}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="uni-banner-img uni-background-7"></div>
-                                <div class="content animated" data-animation="flipInX" data-delay="0.9s">
-                                    <div class="container">
-                                        {{-- <div class="caption">
-                                        <h1>Let's protect your pet's health</h1>
-                                        <p>
-                                            Pet health has an important role in increasing production
-                                            <br>
-                                            and productivity as well as protecting you
-                                        </p>
-                                        <a href="#">APPOINTMENT</a>
-                                    </div> --}}
-                                    </div>
-                                </div>
-                            </div>
+                <div class="uni-hơm-1-department">
+                    <div class="container">
+                        <div class="uni-home-title">
+                            <h3>UPLOAD BUKTI PEMBAYARAN</h3>
+                            <div class="uni-underline"></div>
                         </div>
-                    </div>
-                    <!--OPENING HOURS AND BOOK APPOINTMENT-->
-                    <div class="uni-home-opening-book">
-                        <div class="container">
-                            <div class="uni-home-opening-book-content">
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        <div class="uni-single-department-appointment-form">
-                                            <div class="uni-home-title">
-                                                <h3>Riwayat Pemesanan</h3>
-                                                <div class="uni-underline"></div>
-                                            </div>
-                                            <div class="uni-home-title" style="margin: 0 5%;">
-                                                <div class="table-responsive">
-                                                    <table id="table-users" class="table table-bordered table-striped">
-                                                        <thead>
-                                                            <tr class="text-center">
-                                                                <th>Kode Pemesanan</th>
-                                                                <th>Nama User</th>
-                                                                <th>Hewan</th>
-                                                                <th>Service</th>
-                                                                <th>Harga</th>
-                                                                <th>Booking</th>
-                                                                <th>Status</th>
-                                                                <th>Aksi</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody></tbody>
+                        <div class="uni-shortcode-icon-box-1">
+                            <div class="row" style="margin-bottom: 100px;">
+                                <div class="col text-center">
+                                    <form action="{{ route('pemesanan.uploadBuktiPembayaran', $data->id) }}"
+                                        method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="input-group form-group">
+                                            <span class="input-group-addon"><i class="fa fa-file"
+                                                    aria-hidden="true"></i></span>
+                                            <input type="file" class="form-control @error('bukti') is-invalid @enderror"
+                                                id="bukti" name="bukti" value="{{ old('bukti') }}"
+                                                placeholder="upload bukti pembayaran">
 
-                                                        @foreach ($pemesanan as $p)
-                                                            <tr class="text-center">
-
-                                                                <td>{{ $p->code }}</td>
-                                                                <td>{{ $p->user->name }}</td>
-                                                                <td>{{ $p->hewan }}</td>
-                                                                <td>{{ $p->service->name }}</td>
-                                                                <td>Rp. {{ $p->service->price }}</td>
-                                                                <td>{{ $p->booking }}</td>
-                                                                <td>
-                                                                    @if ($p->status)
-                                                                        <button type="button"
-                                                                            class="btn btn-success">Verified</a>
-                                                                        @else
-                                                                            <button type="button"
-                                                                                class="btn btn-danger">Unverified</a>
-                                                                    @endif
-                                                                </td>
-                                                                {{-- <td>{{ $p->Status }}</td> --}}
-
-                                                                {{-- <td>
-                                                                <form action="/wildan" method="POST">
-                                                                    @csrf
-                                                                    <input type="hidden" value="{{$p->id}}" id="id" name="id">
-                                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                                </form>
-                                                            </td> --}}
-                                                                <td>
-                                                                    @if (!$p->status)
-                                                                        <a class="btn btn-primary"
-                                                                            href="{{ route('pemesanan.showUploadBuktiPembayaran', $p->id) }}">Upload</a>
-                                                                    @endif
-                                                                    {{-- <form action="{{ route('doctor.destroy',$pemesanan->id) }}" method="POST">
-                                                                    @csrf @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                                </form> --}}
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </table>
-                                                </div>
-                                            </div>
+                                            @error('bukti')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
                                         </div>
-                                    </div>
+                                        <button type="submit" class="btn btn-primary">Upload</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
         </section>

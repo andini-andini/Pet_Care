@@ -23,10 +23,14 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
+
+Route::put('pemesanan/update-status/{id}', [pemesananController::class, 'status'])->name('pemesanan.update-status');
+Route::get('pemesanan/upload-bukti-pembayaran/{id}', [pemesananController::class, 'showUploadBuktiPembayaran'])->name('pemesanan.showUploadBuktiPembayaran');
+Route::put('pemesanan/upload-bukti-pembayaran/{id}', [pemesananController::class, 'uploadBuktiPembayaran'])->name('pemesanan.uploadBuktiPembayaran');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index', 'doctor'])->name('home');
 Route::resource('user', userController::class);
@@ -34,5 +38,3 @@ Route::resource('doctor', doctorController::class);
 Route::resource('barang', barangController::class);
 Route::resource('service', serviceController::class);
 Route::resource('pemesanan', pemesananController::class);
-
-Route::put('edit',[pemesananController::class,'status']);
