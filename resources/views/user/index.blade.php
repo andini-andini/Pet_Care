@@ -47,7 +47,7 @@
                 </div>
                 <div class="card-body">
                     <div class="col-12">
-                        <a href="{{route('user.create')}}" class="btn btn-success">Input</a>
+                        {{-- <a href="{{route('user.create')}}" class="btn btn-success">Input</a> --}}
                     </div>
                     <table id="table-users" class="table table-bordered table-striped">
                         <thead>

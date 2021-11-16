@@ -39,7 +39,7 @@
         <div class="col-md-6">
             <div class="card shadow">
                 <div class="card-header">
-                    Edit Barang
+                    Edit layanan
                 </div>
                 <div class="card-body">
                     <form action="{{route('service.update', $service->id)}}" method="POST" enctype="multipart/form-data">

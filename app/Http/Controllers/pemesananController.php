@@ -74,7 +74,7 @@ class pemesananController extends Controller
 
 
         $pemesanan->save();
-        return redirect()->route('home')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('pemesanan.index')->with('success', 'Data Berhasil Ditambahkan');
         // return "joss";
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         // return redirect()->route('/home')->with('success', 'design Berhasil Ditambahkan');

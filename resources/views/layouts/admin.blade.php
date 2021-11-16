@@ -9,7 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Pet Care</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template/admin') }}/plugins/images/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('template/user') }}/images/favicon.png" />
+    {{-- <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template/admin') }}/plugins/images/favicon.png"> --}}
     <!-- Custom CSS -->
     <link href="{{ asset('template/admin') }}/css/style.min.css" rel="stylesheet">
     @yield('css')
@@ -27,9 +28,9 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header" data-logobg="skin6">
                     <a class="navbar-brand" href="#">
-                        <b class="logo-icon">
+                        {{-- <b class="logo-icon">
                             <img src="{{ asset('template/admin') }}/plugins/images/logo-icon.png" alt="homepage" />
-                        </b>
+                        </b> --}}
                         <span class="logo-text">
                             <img src="{{ asset('template/admin') }}/plugins/images/logo-text.png" alt="homepage" />
                         </span>

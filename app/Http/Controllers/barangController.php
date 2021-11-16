@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,9 +17,16 @@ class barangController extends Controller
      */
     public function index()
     {
-        $barang = Barang::all(); // Mengambil semua isi tabel
-        $posts = Barang::orderBy('id', 'desc')->paginate(5);
-        return view('barang.index', compact('barang'), ['data' => $barang]);
+        // $barang = Barang::all(); // Mengambil semua isi tabel
+        // $posts = Barang::orderBy('id', 'desc')->paginate(5);
+        // return view('barang.index', compact('barang'), ['data' => $barang]);
+        $users = User::all()->sortBy("asc");
+        $barang = Barang::all()->sortBy("asc");
+        if (Auth::user()->role == 'usr') {
+            return view('barang.shop', compact('barang'));
+        } else if (Auth::user()->role == 'adm') {
+            return view('barang.index');
+        }
     }
 
     /**
@@ -65,7 +74,7 @@ class barangController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('barang.detail');
     }
 
     /**

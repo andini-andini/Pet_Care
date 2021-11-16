@@ -48,7 +48,7 @@
                                     <!--LOGO-->
                                     <div class="wrapper-logo">
                                         <a class="logo-default" href="{{ route('home') }}"><img
-                                                src="template/user/images/logo.png" alt="" class="img-responsive"></a>
+                                                src="{{ asset('template/user') }}/images/logo.png" alt="" class="img-responsive"></a>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                                                     <li><a href="#">doctor</a></li>
                                                     <li class="has-sub"><a href='#'>shop</a>
                                                         <ul>
-                                                            <li><a href="06_01_shop.html">Shop</a></li>
+                                                            <li><a href="{{route('barang.index')}}">Shop</a></li>
                                                             <li><a href="06_03_cart.html">Cart</a></li>
                                                             <li><a href="06_04_checkout.html">Checkout</a></li>
                                                         </ul>
@@ -88,68 +88,52 @@
                                             </div>
                                         </nav>
                                     </div>
+                                    <!--SEARCH AND APPOINTMENT-->
+                                <div class="uni-search-appointment">
+                                    <ul>
+                                        <li class="un-btn-search">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </li>
+                                        <li class="uni-btn-appointment">
+                                            <a href="{{route('pemesanan.create')}}">Appointment</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--FORM SEARCH-->
+                        <div class="uni-form-search-header">
+                            <div class="box-search-header collapse" id="box-search-header">
+                                <div class="uni-input-group">
+                                    <input type="text" name="key" placeholder="Search" class="form-control">
+                                    <button class="uni-btn btn-search">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </header>
+            </div>
+        </header>
 
             <div id="main-content" class="site-main-content">
                 <section class="site-content-area">
-                    <!--BANNER-->
-                    <div class="uni-banner">
-                        <div class="uni-owl-one-item owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="uni-banner-img uni-background-5"></div>
-                                <div class="content animated" data-animation="flipInX" data-delay="0.9s">
-                                    <div class="container">
-                                        {{-- <div class="caption">
-                                        <h1>Let's protect your pet's health</h1>
-                                        <p>
-                                            Pet health has an important role in increasing production
-                                            <br>
-                                            and productivity as well as protecting you
-                                        </p>
-                                        <a href="#">APPOINTMENT</a>
-                                    </div> --}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="uni-banner-img uni-background-6"></div>
-                                <div class="content animated" data-animation="flipInX" data-delay="0.9s">
-                                    <div class="container">
-                                        {{-- <div class="caption">
-                                        <h1>Let's protect your pet's health</h1>
-                                        <p>
-                                            Pet health has an important role in increasing production
-                                            <br>
-                                            and productivity as well as protecting you
-                                        </p>
-                                        <a href="#">APPOINTMENT</a>
-                                    </div> --}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="uni-banner-img uni-background-7"></div>
-                                <div class="content animated" data-animation="flipInX" data-delay="0.9s">
-                                    <div class="container">
-                                        {{-- <div class="caption">
-                                        <h1>Let's protect your pet's health</h1>
-                                        <p>
-                                            Pet health has an important role in increasing production
-                                            <br>
-                                            and productivity as well as protecting you
-                                        </p>
-                                        <a href="#">APPOINTMENT</a>
-                                    </div> --}}
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="uni-banner-default uni-background-1">
+                        <div class="container ">
+
                         </div>
                     </div>
+                </section>
+            </div>
+
+            <div>
+                <br><br><br><br><br><br><br><br>
+            </div>
+
+            <div id="main-content" class="site-main-content">
+                <section class="site-content-area">
                     <!--OPENING HOURS AND BOOK APPOINTMENT-->
                     <div class="uni-home-opening-book">
                         <div class="container">
@@ -189,11 +173,11 @@
                                                                 <td>{{ $p->booking }}</td>
                                                                 <td>
                                                                     @if ($p->status)
-                                                                        <button type="button"
-                                                                            class="btn btn-success">Verified</a>
+                                                                        <a text="text"
+                                                                            class="text">Verified</a>
                                                                         @else
-                                                                            <button type="button"
-                                                                                class="btn btn-danger">Unverified</a>
+                                                                            <a text="text"
+                                                                                class="text">Unverified</a>
                                                                     @endif
                                                                 </td>
                                                                 {{-- <td>{{ $p->Status }}</td> --}}
@@ -229,6 +213,10 @@
             </div>
         </div>
         </section>
+
+        <div>
+            <br><br>
+        </div>
 
         <footer class="site-footer footer-default">
             <div class="footer-main-content">

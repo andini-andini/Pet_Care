@@ -163,7 +163,7 @@
                                                 <li><a href="#">doctor</a></li>
                                                 <li class="has-sub"><a href='#'>shop</a>
                                                     <ul>
-                                                        <li><a href="06_01_shop.html">Shop</a></li>
+                                                        <li><a href="{{route('barang.index')}}">Shop</a></li>
                                                         <li><a href="06_03_cart.html">Cart</a></li>
                                                         <li><a href="06_04_checkout.html">Checkout</a></li>
                                                     </ul>
