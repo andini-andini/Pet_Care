@@ -141,7 +141,7 @@
 </nav>
 <!-- End mobile menu --> --}}
 
-    <div class="uni-home-1">
+    <div class="@yield('container')">
         <div id="wrapper-container" class="site-wrapper-container">
             <header>
                 <div class="uni-medicare-header sticky-menu">
@@ -170,7 +170,7 @@
                                                     <li class="has-sub"><a href='#'>shop</a>
                                                         <ul>
                                                             <li><a href="{{ route('barang.index') }}">Shop</a></li>
-                                                            <li><a href="06_03_cart.html">Cart</a></li>
+                                                            <li><a href="{{ route('cart.index') }}">Cart</a></li>
                                                             <li><a href="06_04_checkout.html">Checkout</a></li>
                                                         </ul>
                                                     </li>
@@ -354,6 +354,7 @@
             </footer>
         </div>
     </div>
+
     <script src="{{ asset('template/user') }}/plugin/jquery/jquery-2.0.2.min.js"></script>
     <script src="{{ asset('template/user') }}/plugin/jquery-ui/jquery-ui.min.js"></script>
     <script src="{{ asset('template/user') }}/plugin/bootstrap/js/bootstrap.js"></script>
@@ -382,5 +383,7 @@
 
     <script src="{{ asset('template/user') }}/js/main.js"></script>
 </body>
+
+<!-- 06_03_cart.html  [XR&CO'2014], Tue, 22 Oct 2019 11:56:17 GMT -->
 
 </html>

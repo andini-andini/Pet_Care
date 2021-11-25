@@ -64,12 +64,15 @@
                                                 </div>
                                                 <!-- .description -->
 
-                                                <form class="cart" method="post" enctype="multipart/form-data">
+                                                <form class="cart" method="post"
+                                                    action="{{ route('cart.store') }}">
+                                                    @csrf
+                                                    <input type="hidden" value="{{ $brg->id }}" name="barang_id">
                                                     <div class="quantity">
                                                         <div class="form-group">
                                                             <label>Quantity:</label>
                                                             <input type="number" class="form-control qty" id="pwd" min="0"
-                                                                value="1">
+                                                                name="qty" value="1">
                                                         </div>
                                                     </div>
                                                     <button type="submit" name="add-to-cart"

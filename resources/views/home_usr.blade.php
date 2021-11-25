@@ -1,5 +1,7 @@
 @extends('layouts.user')
 
+@section('container', 'uni-home-1')
+
 @section('content')
 
     <!--BANNER-->
