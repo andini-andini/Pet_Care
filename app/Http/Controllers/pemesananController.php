@@ -54,7 +54,7 @@ class pemesananController extends Controller
         $request->validate([
             'hewan' => 'required',
             'booking' => 'required',
-
+            'service' => 'required',
         ]);
 
         $pemesanan = new Pemesanan();

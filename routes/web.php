@@ -7,6 +7,7 @@ use App\Http\Controllers\categoriController;
 use App\Http\Controllers\pemesananController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\serviceController;
+use App\Http\Controllers\pembelianController;
 use App\Models\Service;
 
 use Illuminate\Support\Facades\Route;
@@ -43,3 +44,4 @@ Route::resource('barang', barangController::class);
 Route::resource('service', serviceController::class);
 Route::resource('pemesanan', pemesananController::class);
 Route::resource('categori', categoriController::class);
+Route::resource('pembelian', pembelianController::class);
