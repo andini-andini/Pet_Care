@@ -56,6 +56,8 @@ class barangController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required',
+            'stok' => 'required',
+            'deskripsi' => 'required',
             'image' => 'required',
             // 'featured_image' => 'required',
 
@@ -66,6 +68,8 @@ class barangController extends Controller
         $barang = new Barang();
         $barang->name = $request->get('name');
         $barang->price = $request->get('price');
+        $barang->stok = $request->get('stok');
+        $barang->deskripsi = $request->get('deskripsi');
         $barang->image = $image_name;
 
         $take = Categori::all()->where('id', Request('categori'))->first();
@@ -74,7 +78,7 @@ class barangController extends Controller
 
         $barang->save();
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
-        return redirect()->route('barang.index')->with('success', 'design Berhasil Ditambahkan');
+        return redirect()->route('barang.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -116,6 +120,8 @@ class barangController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required',
+            'stok' => 'required',
+            'deskripsi' => 'required',
         ]);
         $barang = Barang::find($id);
         if ($request->file('image') != null && $barang->image && file_exists(storage_path('app/public/' . $barang->image))) {
@@ -128,10 +134,12 @@ class barangController extends Controller
         }
         $barang->name = $request->get('name');
         $barang->price = $request->get('price');
+        $barang->stok = $request->get('stok');
+        $barang->deskripsi = $request->get('deskripsi');
         $barang->image = $image_name;
         $barang->save();
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
-        return redirect()->route('barang.index')->with('success', 'design Berhasil Diperbarui');
+        return redirect()->route('barang.index')->with('success', 'Data Berhasil Diperbarui');
     }
 
     /**

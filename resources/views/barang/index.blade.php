@@ -58,6 +58,7 @@
                                 <th>Id</th>
                                 <th>Nama</th>
                                 <th>Kategori</th>
+                                <th>Stok</th>
                                 <th>Harga</th>
                                 <th>Gambar</th>
                             </tr>
@@ -65,18 +66,19 @@
                         <tbody></tbody>
 
 
-                    @foreach ($barang as $barang)
+                    @foreach ($barang as $brg)
                         <tr class="text-center">
 
-                            <td>{{ $barang->id }}</td>
-                            <td>{{ $barang->name }}</td>
-                            <td>{{ $barang->categori->name }}</td>
-                            <td>Rp. {{ $barang->price }}</td>
-                            <td> <img width="100px" src="{{asset('storage/'.$barang->image)}}"> </td>
+                            <td>{{ $brg->id }}</td>
+                            <td>{{ $brg->name }}</td>
+                            <td>{{ $brg->categori->name }}</td>
+                            <td>{{ $brg->stok }}</td>
+                            <td>Rp. {{ $brg->price }}</td>
+                            <td> <img width="100px" src="{{asset('storage/'.$brg->image)}}"> </td>
 
                             <td>
-                                <form action="{{ route('barang.destroy',$barang->id) }}" method="POST">
-                                    <a class="btn btn-primary" href="{{ route('barang.edit',$barang->id) }}">Edit</a>
+                                <form action="{{ route('barang.destroy',$brg->id) }}" method="POST">
+                                    <a class="btn btn-primary" href="{{ route('barang.edit',$brg->id) }}">Edit</a>
                                     @csrf @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>

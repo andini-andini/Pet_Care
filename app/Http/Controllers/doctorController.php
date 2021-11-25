@@ -60,7 +60,7 @@ class doctorController extends Controller
         $doctor->image = $image_name;
         $doctor->save();
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
-        return redirect()->route('doctor.index')->with('success', 'design Berhasil Ditambahkan');
+        return redirect()->route('doctor.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -119,7 +119,7 @@ class doctorController extends Controller
         $doctor->image = $image_name;
         $doctor->save();
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
-        return redirect()->route('doctor.index')->with('success', 'design Berhasil Diperbarui');
+        return redirect()->route('doctor.index')->with('success', 'Data Berhasil Diperbarui');
     }
 
     /**

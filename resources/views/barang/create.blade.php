@@ -69,6 +69,22 @@
                             </select>
                         </div>
                         <div class="form-group mb-3">
+                            <label>Stok</label>
+                            <input type="text" class="form-control @error('stok') is-invalid @enderror" id="stok" name="stok" value="{{ old('stok')}}" placeholder="Enter stok">
+
+                            @error('stok')
+                            <small class="text-danger">{{$message}}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Deskripsi</label>
+                            <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" value="{{ old('deskripsi')}}" placeholder="Enter deskripsi">
+
+                            @error('deskripsi')
+                            <small class="text-danger">{{$message}}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
                             <label>Harga</label>
                             <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price')}}" placeholder="Enter Price">
 
