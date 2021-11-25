@@ -103,6 +103,12 @@
                                 <span class="hide-menu">Data Pemesanan</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('categori.index')}}" aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Data Kategori</span>
+                            </a>
+                        </li>
 
                         {{-- @endif --}}
 

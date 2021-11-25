@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\User;
+use App\Models\Categori;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -20,12 +21,14 @@ class barangController extends Controller
         // $barang = Barang::all(); // Mengambil semua isi tabel
         // $posts = Barang::orderBy('id', 'desc')->paginate(5);
         // return view('barang.index', compact('barang'), ['data' => $barang]);
-        $users = User::all()->sortBy("asc");
+        $user = User::all()->sortBy("asc");
         $barang = Barang::all()->sortBy("asc");
+        $categori = Categori::all()->sortBy("asc");
         if (Auth::user()->role == 'usr') {
-            return view('barang.shop', compact('barang'));
+            // $barang = Barang::with('categori', 'user')->get();
+            return view('barang.shop', ['categori' => $categori], compact('barang', 'categori'));
         } else if (Auth::user()->role == 'adm') {
-            return view('barang.index');
+            return view('barang.index', ['categori' => $categori], compact('barang', 'categori'));
         }
     }
 
@@ -36,7 +39,10 @@ class barangController extends Controller
      */
     public function create()
     {
-        return view('barang.create');
+        $categori = Categori::all()->sortBy("asc");
+        $barang = Barang::with('categori');
+        return view('barang.create', ['barang' => $barang, 'categori' => $categori]);
+        // return view('barang.create');
     }
 
     /**
@@ -61,6 +67,11 @@ class barangController extends Controller
         $barang->name = $request->get('name');
         $barang->price = $request->get('price');
         $barang->image = $image_name;
+
+        $take = Categori::all()->where('id', Request('categori'))->first();
+
+        $barang->categori_id = $take->id;
+
         $barang->save();
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect()->route('barang.index')->with('success', 'design Berhasil Ditambahkan');
@@ -87,6 +98,10 @@ class barangController extends Controller
     {
         $barang = Barang::find($id);
         return view('barang.edit', compact('barang'));
+
+        // $categori = Categori::all()->sortBy("asc");
+        // $barang = Barang::find($id)->with('categori');
+        // return view('barang.edit', compact('barang'), ['barang' => $barang, 'categori' => $categori]);
     }
 
     /**
@@ -129,5 +144,11 @@ class barangController extends Controller
     {
         Barang::find($id)->delete();
         return redirect()->route('barang.index')->with('success', 'Data Berhasil Dihapus');
+    }
+
+    public function barang_categori(Categori $categori)
+    {
+        $barang = $categori->Barang()->get();
+        return $barang;
     }
 }

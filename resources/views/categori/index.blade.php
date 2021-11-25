@@ -43,12 +43,12 @@
         <div class="col-12">
             <div class="card shadow">
                 <div class="card-header">
-                    Data Barang
+                    Data Kategori
                 </div>
                 <div class="container-fluid">
                     <div class="row mb-4">
                         <div class="col-12">
-                            <a href="{{route('barang.create')}}" class="btn btn-success">Input</a>
+                            <a href="{{route('categori.create')}}" class="btn btn-success">Input</a>
                         </div>
                     </div>
                 <div class="card-body">
@@ -57,26 +57,20 @@
                             <tr class="text-center">
                                 <th>Id</th>
                                 <th>Nama</th>
-                                <th>Kategori</th>
-                                <th>Harga</th>
-                                <th>Gambar</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
 
 
-                    @foreach ($barang as $barang)
+                    @foreach ($categori as $cat)
                         <tr class="text-center">
 
-                            <td>{{ $barang->id }}</td>
-                            <td>{{ $barang->name }}</td>
-                            <td>{{ $barang->categori->name }}</td>
-                            <td>Rp. {{ $barang->price }}</td>
-                            <td> <img width="100px" src="{{asset('storage/'.$barang->image)}}"> </td>
+                            <td>{{ $cat->id }}</td>
+                            <td>{{ $cat->name }}</td>
 
                             <td>
-                                <form action="{{ route('barang.destroy',$barang->id) }}" method="POST">
-                                    <a class="btn btn-primary" href="{{ route('barang.edit',$barang->id) }}">Edit</a>
+                                <form action="{{ route('categori.destroy',$cat->id) }}" method="POST">
+                                    <a class="btn btn-primary" href="{{ route('categori.edit',$cat->id) }}">Edit</a>
                                     @csrf @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>

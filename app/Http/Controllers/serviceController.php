@@ -55,7 +55,7 @@ class serviceController extends Controller
         $service->image = $image_name;
         $service->save();
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
-        return redirect()->route('service.index')->with('success', 'design Berhasil Ditambahkan');
+        return redirect()->route('service.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -108,7 +108,7 @@ class serviceController extends Controller
         $service->image = $image_name;
         $service->save();
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
-        return redirect()->route('service.index')->with('success', 'design Berhasil Diperbarui');
+        return redirect()->route('service.index')->with('success', 'Data Berhasil Diperbarui');
     }
 
     /**

@@ -22,7 +22,7 @@
 <div class="container-fluid">
     <div class="row mb-4">
         <div class="col-12">
-            <a href="{{route('barang.index')}}" class="btn btn-sm- btn-outline-secondary">Kembali</a>
+            <a href="{{route('categori.index')}}" class="btn btn-sm- btn-outline-secondary">Kembali</a>
         </div>
     </div>
 
@@ -45,41 +45,16 @@
         <div class="col-md-6">
             <div class="card shadow">
                 <div class="card-header">
-                    Tambah Barang
+                    Tambah Kategori
                 </div>
                 <div class="card-body">
-                    <form action="{{route('barang.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('categori.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-3">
                             <label>Nama</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name')}}" placeholder="Enter name">
 
                             @error('name')
-                            <small class="text-danger">{{$message}}</small>
-                            @enderror
-                        </div>
-                        <div class="form-group mb-3">
-                            <label>Kategori</label>
-                            <select name="categori" id="categori" class="form-control @error('categori') is-invalid @enderror"
-                                name="categori" value="{{ old('categori') }}" autocomplete="categori">
-                                @foreach ($categori as $categori)
-                                <option value="" disabled selected>Kategori</option>
-                                <option value="{{$categori->id}}">{{$categori->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label>Harga</label>
-                            <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price')}}" placeholder="Enter Price">
-
-                            @error('price')
-                            <small class="text-danger">{{$message}}</small>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="image" class="form-label">Image</label>
-                            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" accept="image/*">
-                            @error('image')
                             <small class="text-danger">{{$message}}</small>
                             @enderror
                         </div>

@@ -15,4 +15,9 @@ class Barang extends Model
         'price',
         'image',
     ];
+
+    public function Categori()
+    {
+        return $this->belongsTo(Categori::class, 'categori_id');
+    }
 }

@@ -1,3 +1,9 @@
+@foreach ($categ as $cat)
+{{$cat->id}}
+{{$cat->name}}
+{{$cat->categori_id}}
+
+@endforeach
 <!doctype html>
 <html lang="en">
 
