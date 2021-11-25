@@ -89,7 +89,13 @@ class barangController extends Controller
      */
     public function show($id)
     {
-        return view('barang.detail');
+        // $barang = Barang::where('id', $id)->first();
+        // $Mahasiswa = Mahasiswa::find($Nim);
+        // return view('mahasiswas.detail', compact('Mahasiswa'));
+
+        // $barang = Barang::find($id);
+        $barang = Barang::all()->where('id', $id);
+        return view('barang.detail', compact('barang'));
     }
 
     /**

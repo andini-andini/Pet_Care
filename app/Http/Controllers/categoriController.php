@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Barang;
 use App\Models\Categori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class categoriController extends Controller
 {
@@ -15,9 +17,17 @@ class categoriController extends Controller
      */
     public function index()
     {
-        $categori = Categori::all(); // Mengambil semua isi tabel
+        $user = User::all()->sortBy("asc");
+        $barang = Barang::all()->sortBy("asc");
+        $categori = Categori::all()->sortBy("asc");
+
         $posts = Categori::orderBy('id', 'desc');
-        return view('categori.index', compact('categori'), ['data' => $categori]);
+
+        if (Auth::user()->role == 'usr') {
+            return view('barang.shop', ['categori' => $categori], compact('barang', 'categori'));
+        } else if (Auth::user()->role == 'adm') {
+            return view('categori.index', ['categori' => $categori], compact('barang', 'categori'));
+        }
     }
 
     /**
@@ -91,7 +101,7 @@ class categoriController extends Controller
         $categori->name = $request->get('name');
         $categori->save();
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
-        return redirect()->route('service.index')->with('success', 'Data Berhasil Diperbarui');
+        return redirect()->route('categori.index')->with('success', 'Data Berhasil Diperbarui');
     }
 
     /**
