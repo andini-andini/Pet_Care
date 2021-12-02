@@ -23,7 +23,8 @@
             <div class="lds-pos"></div>
         </div>
     </div>
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <header class="topbar" data-navbarbg="skin5">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header" data-logobg="skin6">
@@ -35,18 +36,22 @@
                             <img src="{{ asset('template/admin') }}/plugins/images/logo-text.png" alt="homepage" />
                         </span>
                     </a>
-                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
+                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                     <ul class="navbar-nav d-none d-md-block d-lg-none">
                         <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                            <a class="nav-toggler nav-link waves-effect waves-light text-white"
+                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
                         <li>
                             <a class="profile-pic" href="#">
-                                <img src="{{ asset('template/admin') }}/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><span class="text-white font-medium">{{ Auth::user()->name }}</span></a>
+                                <img src="{{ asset('template/admin') }}/plugins/images/users/varun.jpg" alt="user-img"
+                                    width="36" class="img-circle"><span
+                                    class="text-white font-medium">{{ Auth::user()->name }}</span></a>
                         </li>
                     </ul>
                 </div>
@@ -60,7 +65,8 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/home" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/home"
+                                aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
@@ -71,40 +77,53 @@
                                 <span class="hide-table">Main Page</span>
                             </a>
                         </li> --}}
-                        {{-- @if (Auth::user()->role == "adm") --}}
+                        {{-- @if (Auth::user()->role == 'adm') --}}
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('user.index')}}" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('user.index') }}" aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-table">Data user</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('doctor.index')}}" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('doctor.index') }}" aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Data Dokter</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('barang.index')}}" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('barang.index') }}" aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Data Barang</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('service.index')}}" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('service.index') }}" aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Data Layanan</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('pemesanan.index')}}" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('pemesanan.index') }}" aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Data Pemesanan</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('categori.index')}}" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('pembelian.index') }}" aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Data Pembelian</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('categori.index') }}" aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Data Kategori</span>
                             </a>
@@ -112,19 +131,21 @@
 
                         {{-- @endif --}}
 
-                        @if (Auth::user()->role == "usr")
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Reservation Data</span>
-                            </a>
-                        </li>
+                        @if (Auth::user()->role == 'usr')
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                                    aria-expanded="false">
+                                    <i class="fa fa-table" aria-hidden="true"></i>
+                                    <span class="hide-menu">Reservation Data</span>
+                                </a>
+                            </li>
                         @endif
 
                         <li class="text-center p-20 upgrade-btn">
                             <a class="btn d-grid btn-danger text-white" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">Log Out</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                class="d-none">
                                 @csrf
                             </form>
                         </li>
@@ -161,7 +182,6 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
     </script>
 
     @yield('script')

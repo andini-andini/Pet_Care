@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,18 @@ class CartController extends Controller
      */
     public function index()
     {
-        $data = Cart::with('barang')->where('user_id', Auth::user()->id)->get();
+        $carts = Cart::with(['barang', 'pembelians'])->where('user_id', Auth::user()->id)->get();
+        if ($carts) {
+            $data = [];
+            if ($carts[0]->pembelians()->exists()) {
+                $data = [];
+            } else {
+                $data = $carts;
+            }
+        } else {
+            $data = [];
+        }
+
         $total = 0;
         foreach ($data as $key => $value) {
             $total += $value->qty * $value->barang->price;
@@ -41,10 +53,12 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        $barang = Barang::find($request->barang_id);
         Cart::create([
             'qty' => $request->qty,
             'barang_id' => $request->barang_id,
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
+            'total' => $barang->price * $request->qty,
         ]);
 
         return redirect()->route('cart.index');

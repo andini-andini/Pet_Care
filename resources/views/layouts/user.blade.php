@@ -171,7 +171,6 @@
                                                         <ul>
                                                             <li><a href="{{ route('barang.index') }}">Shop</a></li>
                                                             <li><a href="{{ route('cart.index') }}">Cart</a></li>
-                                                            <li><a href="06_04_checkout.html">Checkout</a></li>
                                                         </ul>
                                                     </li>
                                                     <li class="has-sub"><a href='#'>History</a>

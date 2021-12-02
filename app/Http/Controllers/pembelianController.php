@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Pembelian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class pembelianController extends Controller
 {
@@ -13,7 +17,15 @@ class pembelianController extends Controller
      */
     public function index()
     {
-        return view('pembelian.index_usr');
+        if (Auth::user()->role == 'adm') {
+            $data = Pembelian::with('carts.barang')->get();
+            return view('pembelian.index', compact('data'));
+        } else {
+            $data = Pembelian::with(['carts.barang'])->whereHas('carts', function ($q) {
+                $q->where('user_id', Auth::user()->id);
+            })->get();
+            return view('pembelian.index_usr', compact('data'));
+        }
     }
 
     /**
@@ -23,7 +35,6 @@ class pembelianController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -34,7 +45,16 @@ class pembelianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = Cart::with('barang')->where('user_id', Auth::user()->id)->get();
+        $total = Cart::where('user_id', Auth::user()->id)->sum('total');
+
+        $pembelian = Pembelian::create([
+            'code' => 'PR-' . random_int(0, 10000),
+            'total' => $total
+        ]);
+
+        $pembelian->carts()->attach($data);
+        return view('pembelian.index_usr');
     }
 
     /**
@@ -68,7 +88,6 @@ class pembelianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -80,5 +99,40 @@ class pembelianController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function status(Request $request, $id)
+    {
+        $pembelian = Pembelian::find($id);
+
+        $pembelian->status = $request->status == "on" ? true : false;
+        $pembelian->save();
+        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        return redirect()->route('pembelian.index')->with('success', 'data Berhasil Diperbarui');
+    }
+
+    public function showuploadBuktiPembayaran($id)
+    {
+        $data = Pembelian::find($id);
+        return view('pembelian.upload', compact('data'));
+    }
+
+    public function uploadBuktiPembayaran(Request $request, $id)
+    {
+        $data = Pembelian::find($id);
+        if ($request->file('bukti') != null && file_exists(storage_path('app/public/' . $data->upload_bukti))) {
+            Storage::delete(['public/' . $data->bukti]);
+            $image_name = $request->file('bukti')->store('bukti', 'public');
+        } elseif ($request->file('bukti') != null) {
+            $image_name = $request->file('bukti')->store('bukti', 'public');
+        } else {
+            $image_name = $data->bukti;
+        }
+
+        $data->update([
+            'bukti' => $image_name
+        ]);
+
+        return redirect()->route('pembelian.index');
     }
 }

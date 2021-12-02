@@ -22,65 +22,61 @@
             <div id="post" class="container">
                 <div class="entry-content">
                     <div class="woocommerce">
-                        <form class="woocommerce-cart-form" method="post">
-                            <table class="woocommerce-cart-form__contents table shop_table_responsive">
-                                <thead>
-                                    <tr>
-                                        <th class="product-remove"></th>
-                                        <th class="product-name">Product</th>
-                                        <th class="product-price">Price</th>
-                                        <th class="product-quantity">Quantity</th>
-                                        <th class="product-subtotal">Total</th>
+                        <table class="woocommerce-cart-form__contents table shop_table_responsive">
+                            <thead>
+                                <tr>
+                                    <th class="product-remove"></th>
+                                    <th class="product-name">Product</th>
+                                    <th class="product-price">Price</th>
+                                    <th class="product-quantity">Quantity</th>
+                                    <th class="product-subtotal">Total</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                @foreach ($cart as $cr)
+                                    <tr class="woocommerce-cart-form__cart-item cart_item">
+                                        <td class="product-remove">
+                                            <form action="{{ route('cart.destroy', $cr->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="remove"><i class="fa fa-times-circle"
+                                                        aria-hidden="true"></i></button>
+                                            </form>
+                                        </td>
+                                        <td class="product-name">
+                                            <span class="product-thumbnail">
+                                                <a href="#">
+                                                    <img src="{{ asset('storage/' . $cr->barang->image) }}" alt=""
+                                                        class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image img-responsive">
+                                                </a>
+                                            </span>
+                                            <a>{{ $cr->barang->name }}</a>
+                                        </td>
+                                        <td class="product-price">
+                                            <span class="woocommerce-Price-amount amount">
+                                                <span
+                                                    class="woocommerce-Price-currencySymbol">Rp</span>{{ $cr->barang->price }}
+                                            </span>
+                                        </td>
+                                        <td class="product-quantity">
+                                            <span class="woocommerce-Price-amount amount">{{ $cr->qty }}
+                                            </span>
+                                        </td>
+                                        <td class="product-subtotal">
+                                            <div class="woocommerce-Price-amount amount">
+                                                <span class="woocommerce-Price-currencySymbol">Rp</span>
+                                                {{ $cr->total }}
+                                            </div>
+                                        </td>
                                     </tr>
-                                </thead>
 
-                                <tbody>
+                                @endforeach
 
-                                    @foreach ($cart as $cr)
+                            </tbody>
 
-                                        <tr class="woocommerce-cart-form__cart-item cart_item">
-                                            <td class="product-remove">
-                                                <form action="{{ route('cart.destroy', $cr->id) }}" method="POST"
-                                                    id="delete">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="remove"><i
-                                                            class="fa fa-times-circle" aria-hidden="true"></i></button>
-                                                </form>
-                                            </td>
-                                            <td class="product-name">
-                                                <span class="product-thumbnail">
-                                                    <a href="#">
-                                                        <img src="{{ asset('storage/' . $cr->barang->image) }}" alt=""
-                                                            class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image img-responsive">
-                                                    </a>
-                                                </span>
-                                                <a>{{ $cr->barang->name }}</a>
-                                            </td>
-                                            <td class="product-price">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <span
-                                                        class="woocommerce-Price-currencySymbol">Rp</span>{{ $cr->barang->price }}
-                                                </span>
-                                            </td>
-                                            <td class="product-quantity">
-                                                <span class="woocommerce-Price-amount amount">{{ $cr->qty }}
-                                                </span>
-                                            </td>
-                                            <td class="product-subtotal">
-                                                <div class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">Rp</span>
-                                                    {{ $cr->qty * $cr->barang->price }}
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                    @endforeach
-
-                                </tbody>
-
-                            </table>
-                        </form>
+                        </table>
 
                         <div class="cart-collaterals">
                             <div class="row">
@@ -104,11 +100,12 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-
-                                        <div class="wc-proceed-to-checkout">
-                                            <a href="#" class="checkout-button button alt wc-forward">Proceed
-                                                to checkout</a>
-                                        </div>
+                                        <form action="{{ route('pembelian.store') }}" method="POST">
+                                            @csrf
+                                            <div class="wc-proceed-to-checkout">
+                                                <button type="submit" class="btn btn-primary">checkout</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
