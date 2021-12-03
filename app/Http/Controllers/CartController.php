@@ -17,16 +17,23 @@ class CartController extends Controller
     public function index()
     {
         $carts = Cart::with(['barang', 'pembelians'])->where('user_id', Auth::user()->id)->get();
-        if ($carts) {
-            $data = [];
-            if ($carts[0]->pembelians()->exists()) {
-                $data = [];
-            } else {
-                $data = $carts;
+        $data = [];
+        foreach ($carts as $c) {
+            if (!$c->pembelians()->exists()) {
+                $data[] = $c;
             }
-        } else {
-            $data = [];
         }
+        // if ($carts) {
+        //     $data = [];
+        //     if ($carts[0]->pembelians()->exists()) {
+        //         $data = [];
+        //     } else {
+        //         $data = $carts;
+        //     }
+        //     return response()->json($carts[0]->pembelians()->exists());
+        // } else {
+        //     $data = [];
+        // }
 
         $total = 0;
         foreach ($data as $key => $value) {

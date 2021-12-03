@@ -45,16 +45,30 @@ class pembelianController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Cart::with('barang')->where('user_id', Auth::user()->id)->get();
-        $total = Cart::where('user_id', Auth::user()->id)->sum('total');
+        $carts = Cart::with(['barang', 'pembelians'])->where('user_id', Auth::user()->id)->get();
+        $data = [];
+        $id = [];
+        foreach ($carts as $c) {
+            if (!$c->pembelians()->exists()) {
+                $data[] = $c;
+                $id[] = $c->id;
+            }
+        }
+        $total = 0;
+        // return response($data);
+        foreach ($data as $key => $value) {
+            $total += $value->qty * $value->barang->price;
+        }
+
+        // $total = Cart::where('user_id', Auth::user()->id)->sum('total');
 
         $pembelian = Pembelian::create([
             'code' => 'PR-' . random_int(0, 10000),
             'total' => $total
         ]);
 
-        $pembelian->carts()->attach($data);
-        return view('pembelian.index_usr');
+        $pembelian->carts()->attach($id);
+        return redirect()->route('pembelian.index');
     }
 
     /**
