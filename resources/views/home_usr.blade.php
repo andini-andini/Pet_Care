@@ -18,7 +18,7 @@
                                 <br>
                                 and productivity as well as protecting you
                             </p>
-                            <a href="#">APPOINTMENT</a>
+                            <a href="{{ route('pemesanan.create') }}">APPOINTMENT</a>
                         </div>
                     </div>
                 </div>
@@ -68,20 +68,15 @@
                     <div class="uni-underline"></div>
                     <br><br><br>
                     <div class="text-center">
-                        <p style="color: white">Sejak 2021, PetCare hadir untuk melayani setiap
-                            customer
-                            secara online.
-                            PetCare
-                            selalu berusaha untuk melayani segala kebutuhan hewan peliharaan anda.
-                            Kami akan selalu memberikan informasi secara maksimal serta selalu
-                            menyediakan
-                            produk-produk terbaik dengan aneka macam pilihan varian.
-                        </p>
+                        <h4 style="color: white">Since 2021, PetCare is here to serve
+                            every
+                            customer online. PetCare always
+                            strives to serve all your pet's needs. We will always provide maximum information and always
+                            provide the best products with a wide selection of variants.
+                        </h4>
                         <br>
                         <p style="color: white">
-                            Visi dan misi kami adalah menjadikan PetCare pilihan utama anda dalam
-                            memenuhi
-                            segala kebutuhan hewan peliharaan anda.
+                            Our vision and mission is to make PetCare your first choice in meeting all your pet's needs.
                         </p>
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\User;
 use App\Models\Service;
 use App\Models\Pemesanan;
@@ -192,5 +193,13 @@ class pemesananController extends Controller
         ]);
 
         return redirect()->route('pemesanan.index');
+    }
+
+    public function cetakResi($id)
+    {
+        $data = Pemesanan::with(['service', 'user'])->find($id);
+
+        $pdf = PDF::loadView('pemesanan.print', ['pemesanan' => $data]);
+        return $pdf->stream();
     }
 }

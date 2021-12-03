@@ -18,7 +18,7 @@
                     <div class="col-12 text-center">
                         <div class="uni-single-department-appointment-form">
                             <div class="uni-home-title">
-                                <h3>Riwayat Pembelian</h3>
+                                <h3>Purchase History</h3>
                                 <div class="uni-underline"></div>
                             </div>
                             <div class="uni-home-title" style="margin: 0 5%;">
@@ -26,11 +26,11 @@
                                     <table id="table-users" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">Kode Pemesanan</th>
-                                                <th class="text-center">Barang</th>
+                                                <th class="text-center">Order Code</th>
+                                                <th class="text-center">Items</th>
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Total</th>
-                                                <th class="text-center">Aksi</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody></tbody>
@@ -55,7 +55,7 @@
                                                                         <span> | </span>
                                                                         <small style="font-size: 12px;">Total: <span
                                                                                 style="font-weight: bold">Rp
-                                                                                {{ $item->total }}</span></small>
+                                                                                {{ number_format($item->total, 0, ',', '.') }}</span></small>
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -64,19 +64,26 @@
                                                 </td>
                                                 <td>
                                                     @if ($pembelian->status)
-                                                        <button class="btn btn-success">Verified</button>
+                                                        <p style="color: green">Verified</p>
                                                     @else
-                                                        <button class="btn btn-danger">Unverified</button>
+                                                        <p style="color: red">Unverified</p>
                                                     @endif
                                                 </td>
-                                                <td>Rp {{ $pembelian->total }}</td>
+                                                <td>Rp {{ number_format($pembelian->total, 0, ',', '.') }}</td>
                                                 <td>
                                                     @if (!$pembelian->bukti)
                                                         <a class="btn btn-primary"
                                                             href="{{ route('pembelian.showUploadBuktiPembayaran', $pembelian->id) }}">Upload</a>
                                                     @else
                                                         @if (!$pembelian->status)
-                                                            <p>Proses verifikasi</p>
+                                                            <p>Verification Process</p>
+                                                        @else
+                                                            <a class="btn btn-success"
+                                                                href="{{ route('pembelian.cetakResi', $pembelian->id) }}">Print
+                                                                Receipt</a>
+                                                            {{-- <button class="btn btn-success"
+                                                                href="{{ route('pembelian.cetakResi', $pembelian->id) }}">Cetak
+                                                                Struk</button> --}}
                                                         @endif
                                                     @endif
                                                 </td>

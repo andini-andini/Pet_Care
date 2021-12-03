@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Cart;
 use App\Models\Pembelian;
 use Illuminate\Http\Request;
@@ -148,5 +149,13 @@ class pembelianController extends Controller
         ]);
 
         return redirect()->route('pembelian.index');
+    }
+
+    public function cetakResi($id)
+    {
+        $data = Pembelian::with(['carts.barang', 'carts.user'])->find($id);
+
+        $pdf = PDF::loadView('pembelian.print', ['pembelian' => $data]);
+        return $pdf->stream();
     }
 }

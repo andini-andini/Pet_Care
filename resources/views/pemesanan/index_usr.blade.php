@@ -18,28 +18,28 @@
                     <div class="col-12 text-center">
                         <div class="uni-single-department-appointment-form">
                             <div class="uni-home-title">
-                                <h3>Riwayat Pemesanan</h3>
+                                <h3>Order History</h3>
                                 <div class="uni-underline"></div>
                             </div>
                             <div class="uni-home-title" style="margin: 0 5%;">
                                 <div class="table-responsive">
                                     <table id="table-users" class="table table-bordered table-striped">
                                         <thead>
-                                            <tr class="text-center">
-                                                <th>Kode Pemesanan</th>
-                                                <th>Nama User</th>
-                                                <th>Hewan</th>
-                                                <th>Service</th>
-                                                <th>Harga</th>
-                                                <th>Booking</th>
-                                                <th>Status</th>
-                                                <th>Aksi</th>
+                                            <tr>
+                                                <th class="text-center">Order Code</th>
+                                                <th class="text-center">Username</th>
+                                                <th class="text-center">Pet</th>
+                                                <th class="text-center">Service</th>
+                                                <th class="text-center">Price</th>
+                                                <th class="text-center">Booking</th>
+                                                <th class="text-center">Status</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody></tbody>
 
                                         @foreach ($pemesanan as $p)
-                                            <tr class="text-center">
+                                            <tr>
 
                                                 <td>{{ $p->code }}</td>
                                                 <td>{{ $p->user->name }}</td>
@@ -49,9 +49,9 @@
                                                 <td>{{ $p->booking }}</td>
                                                 <td>
                                                     @if ($p->status)
-                                                        <a text="text" class="text">Verified</a>
+                                                        <p style="color: green">Verified</p>
                                                     @else
-                                                        <a text="text" class="text">Unverified</a>
+                                                        <p style="color: red">Unverified</p>
                                                     @endif
                                                 </td>
                                                 {{-- <td>{{ $p->Status }}</td> --}}
@@ -67,6 +67,14 @@
                                                     @if (!$p->status)
                                                         <a class="btn btn-primary"
                                                             href="{{ route('pemesanan.showUploadBuktiPembayaran', $p->id) }}">Upload</a>
+                                                    @else
+                                                        @if (!$p->status)
+                                                            <p>Proses verifikasi</p>
+                                                        @else
+                                                            <a class="btn btn-success"
+                                                                href="{{ route('pemesanan.cetakResi', $p->id) }}">Print
+                                                                Receipt</a>
+                                                        @endif
                                                     @endif
                                                     {{-- <form action="{{ route('doctor.destroy',$pemesanan->id) }}" method="POST">
                                                         @csrf @method('DELETE')

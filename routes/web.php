@@ -35,8 +35,10 @@ Route::put('pemesanan/update-status/{id}', [pemesananController::class, 'status'
 Route::put('pembelian/update-status/{id}', [pembelianController::class, 'status'])->name('pembelian.update-status');
 Route::get('pemesanan/upload-bukti-pembayaran/{id}', [pemesananController::class, 'showUploadBuktiPembayaran'])->name('pemesanan.showUploadBuktiPembayaran');
 Route::put('pemesanan/upload-bukti-pembayaran/{id}', [pemesananController::class, 'uploadBuktiPembayaran'])->name('pemesanan.uploadBuktiPembayaran');
+Route::get('pemesanan/cetakResi/{id}', [pemesananController::class, 'cetakResi'])->name('pemesanan.cetakResi');
 Route::get('pembelian/upload-bukti-pembayaran/{id}', [pembelianController::class, 'showUploadBuktiPembayaran'])->name('pembelian.showUploadBuktiPembayaran');
 Route::put('pembelian/upload-bukti-pembayaran/{id}', [pembelianController::class, 'uploadBuktiPembayaran'])->name('pembelian.uploadBuktiPembayaran');
+Route::get('pembelian/cetakResi/{id}', [pembelianController::class, 'cetakResi'])->name('pembelian.cetakResi');
 // Route::get('Shop/{kategori}', 'Web\barangController@barang_categori')->name('barang.categori');
 Route::post('Shop/{categori_id}', [categoriController::class, 'barang_categori'])->name('barangcategori');
 

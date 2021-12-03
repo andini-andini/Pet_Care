@@ -86,9 +86,11 @@
                                         <table class="shop_table shop_table_responsive">
                                             <tbody>
                                                 <tr class="cart-subtotal">
-                                                    <th>Biaya Pengiriman</th>
+                                                    <th>Shipping Costs</th>
                                                     <td><span class="woocommerce-Price-amount amount"><span
-                                                                class="woocommerce-Price-currencySymbol">Rp</span>0</span>
+                                                                class="woocommerce-Price-currencySymbol">Rp </span>0 </span>
+                                                        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                                                        <button class="btn btn-success">Free Shipping</button>
                                                     </td>
                                                 </tr>
                                                 <tr class="order-total">
@@ -103,7 +105,7 @@
                                         <form action="{{ route('pembelian.store') }}" method="POST">
                                             @csrf
                                             <div class="wc-proceed-to-checkout">
-                                                <button type="submit" class="btn btn-primary">checkout</button>
+                                                <button type="submit" class="btn btn-primary">Checkout</button>
                                             </div>
                                         </form>
                                     </div>

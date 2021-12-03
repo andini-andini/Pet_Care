@@ -15,7 +15,7 @@
                     <h3>UPLOAD BUKTI PEMBAYARAN</h3>
                     <div class="uni-underline"></div>
                     <br><br><br>
-                    <p> Silahkan melakukan pembayaran melalui : </p>
+                    <p> Silahkan melakukan pembayaran sesuai dengan total melalui : </p>
                     <br>
                     <p> - Bank BCA : 023 175 9891 a/n Amelia Widya Andini </p>
                     <p> - Bank BRI : 5590 0102 3560 532 a/n Amelia Widya Andini </p> <br>

@@ -175,10 +175,10 @@
                                                     </li>
                                                     <li class="has-sub"><a href='#'>History</a>
                                                         <ul>
-                                                            <li><a href="{{ route('pemesanan.index') }}">History
-                                                                    Pemesanan</a></li>
-                                                            <li><a href="{{ route('pembelian.index') }}">History
-                                                                    Pembelian</a></li>
+                                                            <li><a href="{{ route('pemesanan.index') }}">Order
+                                                                    History</a></li>
+                                                            <li><a href="{{ route('pembelian.index') }}">Purchase
+                                                                    History</a></li>
                                                         </ul>
                                                     </li>
                                                     <li>
@@ -241,9 +241,11 @@
                                                     src="images/logowhite.png" alt="" class="img-responsive"></a></div>
                                         <div class="widget-content">
                                             <p>
-                                                Sejak 2021, PetCare hadir untuk melayani setiap customer secara online.
-                                                PetCare selalu berusaha untuk melayani segala kebutuhan hewan peliharaan
-                                                anda.
+                                                Since 2021, PetCare is here to serve every customer online. PetCare
+                                                always
+                                                strives to serve all your pet's needs. We will always provide maximum
+                                                information and always
+                                                provide the best products with a wide selection of variants.
                                             </p>
                                             <div class="uni-info-contact">
                                                 <ul>
@@ -265,10 +267,13 @@
                                             <div class="uni-quick-link">
                                                 <ul>
                                                     <li><a href="{{ route('home') }}"><span>+</span> Home</a></li>
-                                                    <li><a href="#"><span>+</span> About</a></li>
-                                                    <li><a href="#"><span>+</span> Services</a></li>
-                                                    <li><a href="#"><span>+</span> Doctor</a></li>
                                                     <li><a href="{{ route('barang.index') }}"><span>+</span> Shop</a>
+                                                    <li><a href="{{ route('cart.index') }}"><span>+</span> Cart</a>
+                                                    </li>
+                                                    <li><a href="{{ route('pemesanan.index') }}"><span>+</span>
+                                                            Purchase History</a></li>
+                                                    <li><a href="{{ route('pembelian.index') }}"><span>+</span> Order
+                                                            History</a></li>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -338,7 +343,7 @@
                         <div class="copyright-content">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="copyright-text"> <a href="templateshub.net">Templateshub</a></p>
+                                    <p class="copyright-text"> <a href="#">Pet Care</a></p>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="copyright-menu">

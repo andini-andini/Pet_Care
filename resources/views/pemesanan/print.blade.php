@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Struk Pembelian Barang</title>
+    <title>Struk Pemesanan Jasa</title>
 
     <style>
         .invoice-box {
@@ -105,7 +105,7 @@
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
-                <td colspan="4">
+                <td colspan="2">
                     <table>
                         <tr>
                             <br><br>
@@ -113,7 +113,7 @@
                                 <h4>PET<span style="color: #3f97da">CARE+</span></h4>
                             </td>
                             <td>
-                                Invoice : #{{ $pembelian->code }}<br />
+                                Invoice : #{{ $pemesanan->code }}<br />
                                 Date : {{ date('Y-m-d H:i:s') }}<br />
                             </td>
                         </tr>
@@ -121,13 +121,13 @@
                 </td>
             </tr>
             <tr class="information">
-                <td colspan="4">
+                <td colspan="2">
                     <table>
                         <tr>
                             <td>
-                                {{ $pembelian->carts->first()->user->name }}<br />
-                                {{ $pembelian->carts->first()->user->address }}<br />
-                                {{ $pembelian->carts->first()->user->phone }}
+                                {{ $pemesanan->user->name }}<br />
+                                {{ $pemesanan->user->address }}<br />
+                                {{ $pemesanan->user->phone }}
                             </td>
                             <td>
                                 Customer Service<br />
@@ -142,22 +142,29 @@
 
             <tr class="heading">
                 <td>Item</td>
-                <td style="text-align: left">QTY</td>
-                <td>Price</td>
-                <td>Total</td>
+                <td>Information</td>
             </tr>
-            @foreach ($pembelian->carts as $item)
 
-                <tr class="item">
-                    <td>{{ $item->barang->name }}</td>
-                    <td style="text-align: left"> {{ $item->qty }}</td>
-                    <td>Rp {{ number_format($item->barang->price, 0, ',', '.') }}</td>
-                    <td>Rp {{ number_format($item->total, 0, ',', '.') }}</td>
-                </tr>
-            @endforeach
+            <tr class="item">
+                <td> Service </td>
+                <td>{{ $pemesanan->service->name }}</td>
+            </tr>
+            <tr class="item">
+                <td> Pet </td>
+                <td> {{ $pemesanan->hewan }}</td>
+            </tr>
+            <tr class="item">
+                <td> Booking </td>
+                <td>{{ $pemesanan->booking }}</td>
+            </tr>
+            <tr class="item">
+                <td> Price </td>
+                <td>Rp. {{ number_format($pemesanan->service->price, 0, ',', '.') }}</td>
+
+            </tr>
             <tr class="heading">
-                <td colspan=3> Total </td>
-                <td style="text-align: left">Rp {{ number_format($pembelian->total, 0, ',', '.') }}</td>
+                <td> Total </td>
+                <td>Rp. {{ number_format($pemesanan->service->price, 0, ',', '.') }}</td>
             </tr>
 
         </table>

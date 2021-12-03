@@ -14,6 +14,12 @@
                 <div class="uni-home-title">
                     <h3>UPLOAD BUKTI PEMBAYARAN</h3>
                     <div class="uni-underline"></div>
+                    <br><br><br>
+                    <p> Silahkan melakukan pembayaran sesuai dengan total melalui : </p>
+                    <br>
+                    <p> - Bank BCA : 023 175 9891 a/n Amelia Widya Andini </p>
+                    <p> - Bank BRI : 5590 0102 3560 532 a/n Amelia Widya Andini </p> <br>
+                    <p> Dan mengupload bukti pembayaran disini .</p>
                 </div>
                 <div class="uni-shortcode-icon-box-1">
                     <div class="row" style="margin-bottom: 100px;">
