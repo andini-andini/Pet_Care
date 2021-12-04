@@ -48,7 +48,7 @@
                             name="gender" value="{{ old('gender') }}" autocomplete="gender">
                             <option value="" disabled selected>Gender</option>
                             <option value="male">Male</option>
-                            <option value="femal">Female</option>
+                            <option value="female">Female</option>
                             <option value="other">Other</option>
                         </select>
                         <i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
