@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use PDF;
 use App\Models\Cart;
 use App\Models\Pembelian;
@@ -67,6 +68,12 @@ class pembelianController extends Controller
             'code' => 'PR-' . random_int(0, 10000),
             'total' => $total
         ]);
+
+        foreach ($carts as $carts) {
+            $barang = Barang::where('id', $carts->barang_id)->first();
+            $barang->stok = $barang->stok - $carts->qty;
+            $barang->update();
+        }
 
         $pembelian->carts()->attach($id);
         return redirect()->route('pembelian.index');

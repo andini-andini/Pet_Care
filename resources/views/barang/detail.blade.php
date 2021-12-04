@@ -85,6 +85,10 @@
                                                     <span class="posted_in">Category :
                                                         <a>{{ $brg->categori->name }}</a>
                                                     </span>
+                                                    <br><br>
+                                                    <span class="posted_in">Stok :
+                                                        <a>{{ $brg->stok }}</a>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <!-- .summary -->

@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use SweetAlert;
 
 class CartController extends Controller
 {
@@ -61,14 +62,17 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $barang = Barang::find($request->barang_id);
-        Cart::create([
-            'qty' => $request->qty,
-            'barang_id' => $request->barang_id,
-            'user_id' => Auth::user()->id,
-            'total' => $barang->price * $request->qty,
-        ]);
-
-        return redirect()->route('cart.index');
+        if ($barang->stok > $request->qty) {
+            Cart::create([
+                'qty' => $request->qty,
+                'barang_id' => $request->barang_id,
+                'user_id' => Auth::user()->id,
+                'total' => $barang->price * $request->qty,
+            ]);
+            return redirect()->route('cart.index');
+        } else {
+            // return redirect()->route('barang.index')->with('success', 'Data Berhasil Dihapus');
+        }
     }
 
     /**
