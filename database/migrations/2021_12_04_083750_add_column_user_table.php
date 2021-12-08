@@ -14,7 +14,7 @@ class AddColumnUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('image');
+            $table->string('image')->default('https://bootdey.com/img/Content/avatar/avatar7.png');
         });
     }
 
