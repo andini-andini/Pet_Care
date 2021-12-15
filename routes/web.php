@@ -33,6 +33,7 @@ Auth::routes();
 
 Route::put('pemesanan/update-status/{id}', [pemesananController::class, 'status'])->name('pemesanan.update-status');
 Route::put('pembelian/update-status/{id}', [pembelianController::class, 'status'])->name('pembelian.update-status');
+Route::put('user/update-role/{id}', [userController::class, 'role'])->name('user.update-role');
 Route::get('pemesanan/upload-bukti-pembayaran/{id}', [pemesananController::class, 'showUploadBuktiPembayaran'])->name('pemesanan.showUploadBuktiPembayaran');
 Route::put('pemesanan/upload-bukti-pembayaran/{id}', [pemesananController::class, 'uploadBuktiPembayaran'])->name('pemesanan.uploadBuktiPembayaran');
 Route::get('pemesanan/cetakResi/{id}', [pemesananController::class, 'cetakResi'])->name('pemesanan.cetakResi');

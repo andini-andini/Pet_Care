@@ -58,25 +58,34 @@
                                 <th>Phone</th>
                                 <th>Gender</th>
                                 <th>Address</th>
-                                <th>Aksi</th>
+                                <th>Role</th>
+                                <th>Edit Role</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
 
 
-                    @foreach ($data as $user)
+                    @foreach ($user as $usr)
                         <tr class="text-center">
 
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->phone }}</td>
-                            <td>{{ $user->gender }}</td>
-                            <td>{{ $user->address }}</td>
-
+                            <td>{{ $usr->id }}</td>
+                            <td>{{ $usr->name }}</td>
+                            <td>{{ $usr->email }}</td>
+                            <td>{{ $usr->phone }}</td>
+                            <td>{{ $usr->gender }}</td>
+                            <td>{{ $usr->address }}</td>
+                            <td>{{ $usr->role }}</td>
+                            <td class="text-center">
+                                @if ($usr->role)
+                                    <button type="button" class="btn btn-success editStatusModal"
+                                        data-bs-toggle="modal" data-bs-target="#editStatusModal"
+                                        data-bs-id="{{ $usr->id }}"
+                                        data-bs-status="{{ $usr->role }}">Edit</button>
+                                @endif
+                            </td>
                             <td>
-                                <form action="{{ route('user.destroy',$user->id) }}" method="POST">
-                                    <a class="btn btn-primary" href="{{ route('user.edit',$user->id) }}">Edit</a>
+                                <form action="{{ route('user.destroy',$usr->id) }}" method="POST">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
@@ -89,6 +98,61 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="editStatusModal" tabindex="-1" aria-labelledby="editStatusModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editStatusModalLabel">Edit Role User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="form-edit-status" action="" method="POST">
+                @method('PUT')
+                @csrf
+                <div class="modal-body">
+                    <img src="" width="100%" alt="" id="view-bukti">
+                    <div class="form-group">
+                        <label class="form-check-label" for="role">Role</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="role" name="role">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary m-1" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary m-1">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section('script')
+    <script>
+        $(".editStatusModal").on('click', function(event) {
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+            var status = $(this).attr('data-bs-status');
+            var statusForm = $('#status');
+            var imgBukti = $('#view-bukti');
+            imgBukti.attr('src', "null")
+            statusForm.attr('checked', false)
+
+            var formEdit = $('#form-edit-status');
+            var id = $(this).attr('data-bs-id');
+            var img = $(this).attr('data-bs-upload');
+            var route = APP_URL + "/user/update-role/" + id;
+            formEdit.attr('action', route)
+            if (img != null) {
+                imgBukti.attr('src', APP_URL + "/storage/" + img)
+            } else {
+                imgBukti.attr('src', "null")
+            }
+            statusForm.attr('checked', role == 1 ? true : false)
+        });
+    </script>
+@endsection
 
 <!-- Modal -->
 <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">

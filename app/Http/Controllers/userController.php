@@ -16,18 +16,13 @@ class userController extends Controller
      */
     public function index()
     {
-        // $data = User::where('role', 'usr')->get();
-        // return view('user.index', compact('data'));
-
-        // $data = User::all()->sortBy("asc");
-        // $posts = User::orderBy('id', 'desc')->paginate(5);
-        // return view('user.index', compact('data'));
 
         $user = User::all()->sortBy("asc");
         if (Auth::user()->role == 'usr') {
             return view('user.profile', compact('user'));
         } else if (Auth::user()->role == 'adm') {
-            return redirect()->route('user.show');
+            // return redirect()->route('user.show');
+            return view('user.index', compact('user'));
         }
     }
 
@@ -123,5 +118,14 @@ class userController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function role(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->role = $request->role == "on" ? 1 : 2;
+        $user->save();
+        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        return redirect()->route('user.index')->with('success', 'data Berhasil Diperbarui');
     }
 }
